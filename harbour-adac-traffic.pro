@@ -18,6 +18,8 @@ SOURCES += src/harbour-adac-traffic.cpp \
     src/adacbackend.cpp \
     src/trafficmanager.cpp
 
+DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
+
 DISTFILES += qml/harbour-adac-traffic.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
     qml/cover/CoverPage.qml \

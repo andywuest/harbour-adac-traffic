@@ -3,6 +3,11 @@
 #endif
 
 #include <sailfishapp.h>
+#include <QGuiApplication>
+#include <QQmlContext>
+#include <QQuickView>
+#include <QScopedPointer>
+#include <QtQml>
 
 #include "trafficmanager.h"
 
@@ -23,8 +28,7 @@ int main(int argc, char *argv[])
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
     QQmlContext *context = view.data()->rootContext();
-// TODO
-//     context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
+     context->setContextProperty("applicationVersion", QString(VERSION_NUMBER));
 
     TrafficManager trafficManager;
     context->setContextProperty("trafficManager", &trafficManager);

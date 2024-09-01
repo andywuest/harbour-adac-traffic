@@ -21,6 +21,9 @@ Short description of my Sailfish OS Application
 %setup -q -n %{name}-%{version}
 
 %build
+# >> build pre
+export VERSION_NUMBER=%{version}
+# << build pre
 
 %qmake5 
 
@@ -31,7 +34,9 @@ Short description of my Sailfish OS Application
 %qmake5_install
 
 
-desktop-file-install --delete-original         --dir %{buildroot}%{_datadir}/applications                %{buildroot}%{_datadir}/applications/*.desktop
+desktop-file-install --delete-original \
+  --dir %{buildroot}%{_datadir}/applications \
+  %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %defattr(-,root,root,-)
