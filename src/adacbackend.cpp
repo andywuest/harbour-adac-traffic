@@ -51,7 +51,6 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url) {
   request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
   request.setRawHeader("Origin", "https://www.adac.de");
 
-
   QString postBody(ADAC_POST_BODY);
 
   QByteArray finalPostBody = postBody.arg("D", "", "A7", GRAPHQL_QUERY).toUtf8();
@@ -68,7 +67,7 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url) {
 
   request.setRawHeader("x-graph-query-hash", hash.toHex()); // TODO calculate
 
-  return manager->post(request, postBody.arg("D", "", "A7").toUtf8());
+  return manager->post(request, postBody.arg("D", "", "A8").toUtf8());
 }
 
 void ADACBackend::connectErrorSlot(QNetworkReply *reply) {

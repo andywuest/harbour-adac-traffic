@@ -7,3 +7,9 @@ function log(message) {
         console.log(message);
     }
 }
+
+function countryToIsoCode(countryName) {
+    if ("Deutschland" === countryName) {
+        return "de";
+    }
+}

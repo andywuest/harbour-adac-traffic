@@ -51,6 +51,16 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                }
+            }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: {
+                }
+            }
+            MenuItem {
                 text: qsTr("Reload Traffic Data")
                 onClicked: {
                     loading = true;
@@ -109,119 +119,273 @@ Page {
             }
 
             SilicaListView {
-                id: incidentsListView
+                    id: incidentsListView
+                    height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
+                    clip: true
 
-                height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
-                width: parent.width
-                anchors.left: parent.left
-                anchors.right: parent.right
+//                    header: PageHeader {
+//                        id: pageHeader
+//                        title: "title"
+//                        description: "tags"
 
-                clip: true
+//                    }
 
-                model: ListModel {
-                    id: trafficIncidentsModel
-                }
+//                    footer: Item {
+//                        width: parent.width
+//                        height: Theme.horizontalPageMargin
+//                    }
 
-                delegate: ListItem {
-                    contentHeight: incidentItem.height + (2 * Theme.paddingMedium)
-                    contentWidth: parent.width
+                    width: parent.width
+                    // height: parent.height
 
-                    onClicked: {
-                        var selectedIncident = incidentsListView.model.get(index);
-                        // pageStack.push(Qt.resolvedUrl("../pages/DetailsPage.qml"), { incident: selectedIncident }) // TODO page url
+                    // anchors.top: header.bottom
+
+
+                    VerticalScrollDecorator {}
+
+    //                PullDownMenu{
+    //                    MenuItem {
+    //                        text: qsTr("Copy link to clipboard")
+    //                        onClicked: Clipboard.text = source
+    //                    }
+    //                    MenuItem {
+    //                        text: qsTr("Open in external browser")
+    //                        onClicked: Qt.openUrlExternally(source)
+    //                    }
+    //                    MenuItem {
+    //                        text: qsTr("Open directly")
+    //                        onClicked: pageStack.push("webView.qml", {"pageurl": source});
+
+    //                    }
+    //                    MenuItem {
+    //                        text: qsTr("Search thread")
+    //                        onClicked: pageStack.push("SearchPage.qml", {"searchid": topicid, "aTitle": aTitle });
+
+    //                    }
+    //                }
+
+    //                BusyIndicator {
+    //                    id: vplaceholder
+    //                    running: commodel.count == 0
+    //                    anchors.centerIn: parent
+    //                    size: BusyIndicatorSize.Large
+    //                }
+
+                    model: ListModel {
+                        id: trafficIncidentsModel
                     }
 
-                    Item {
-                        id: incidentItem
+                    delegate: ListItem {
+                        // enabled: menu.hasContent
                         width: parent.width
-                        height: incidentRow.height + incidentSeparator.height
-                        y: Theme.paddingMedium
+                        contentHeight:  delegateCol.height + Theme.paddingLarge
+                        anchors.horizontalCenter: parent.horizontalCenter
 
-                        Row {
-                            id: incidentRow
-                            width: parent.width - (2 * Theme.horizontalPageMargin)
+                        Column {
+                            id: delegateCol
+                            width: parent.width - 2*Theme.horizontalPageMargin
+                            height: childrenRect.height
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
+                            }
                             spacing: Theme.paddingMedium
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
 
-                            // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
-                            Column {
-                                id: trafficIncidentColumn
-                                width: parent.width // - (2 * Theme.horizontalPageMargin)
-                                // x: Theme.horizontalPageMargin
-                                height: /*firstRow.height + */ /*changeValuesRow.height + iconLabelRow.height +*/ directionRow.height + detailsRow.height
-                                /* + secondRow.height*/
-                                        //+ changeValuesRow.height
-                                        //+ (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
+                            Row {
+                                id: titleRow
+                                width: parent.width
+                                spacing: Theme.paddingSmall
 
-                                anchors.verticalCenter: parent.verticalCenter
-
-//                                IconLabelRow {
-//                                    id: iconLabelRow
-//                                    lineType: Functions.resolveIconForLines(affected)
-//                                    affectedLines: Functions.getListOfAffectedLines(affected)
-//                                }
-
-                                Row {
-                                    id: directionRow
-                                    width: parent.width
-                                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
-
-                                    Label {
-                                        id: validityLabel
-                                        width: parent.width
-                                        height: parent.height
-                                        text: headline.from + " -> " + headline.to
-
-                                            //"A7 Karlsruhe -> Stuttgart"
-                                            // Functions.createAvailabilityLabel(_fromFormatted, _toFormatted)
-                                            // qsTr("On %1 until %2 ").arg(_fromFormatted).arg(_toFormatted)
-                                        truncationMode: TruncationMode.Fade// TODO check for very long texts
-                                        // elide: Text.ElideRight
-                                        color: Theme.primaryColor
-                                        font.pixelSize: Theme.fontSizeExtraSmall
-                                        font.bold: true
-                                        horizontalAlignment: Text.AlignLeft
-                                    }
+                                Image {
+                                   id: titleRowImage
+                                   width: parent.width * 1 / 4
+                                   source: "../icons/" + Functions.countryToIsoCode(streetSign.country) + "/" + street.toLowerCase() + ".svg"
+//                                   height: iconLabelRow.height
+//                                   width: iconLabelRow.height
+                                   fillMode: Image.PreserveAspectFit
+                                   anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                Row {
-                                    id: detailsRow
-                                    width: parent.width
-                                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
-
+                                Column {
+                                    id: titleRowText
+                                    width: parent.width * 3 / 4
                                     Label {
-                                        width: parent.width
-                                        height: parent.height
-                                        text: details
-                                            // Functions.determineQuoteDate(quoteTimestamp)
-                                        truncationMode: TruncationMode.Fade
-                                        color: Theme.primaryColor
-                                        font.pixelSize: Theme.fontSizeExtraSmall
-                                        horizontalAlignment: Text.AlignLeft
+                                        text: headline.text ? headline.text : headline.from + " -> " + headline.to
                                     }
+                                }
+                            }
 
+                            Label {
+                                text: "<style>" +
+                                      "a { color: %1 }".arg(Theme.highlightColor) +
+                                      "</style>" +
+                                      "<p>" + details + "</p>"
+                                width: parent.width
+                                baseUrl: "https://asdfasdfa.sdde.de"
+                                textFormat: Text.RichText
+                                wrapMode: Text.Wrap
+                                font.pixelSize: Theme.fontSizeSmall
+                            }
+
+                            Row {
+                                id: timeLossRow
+                                width: parent.width
+                                spacing: Theme.paddingSmall
+                                visible: timeLoss ? true : false
+
+                                IconButton {
+                                   id: timeLossIcon
+                                   width: parent.width * 1 / 4 // TODO witdht
+                                   icon.source: "image://theme/icon-s-time" + "?" + Theme.primaryColor
                                 }
 
+                                Column {
+                                    id: timeLossTextColumn
+                                    width: parent.width  * 3 / 4 // TODO WIDTH
+                                    Label {
+                                        text: qsTr("Zeitverlust") + ": " + timeLoss
+                                    }
+                                }
+                            }
+
+                            Separator {
+                                color: Theme.highlightColor
+                                width: parent.width
+                                horizontalAlignment: Qt.AlignHCenter
                             }
 
                         }
+                    }
 
-                        Separator {
-                            id: incidentSeparator
-                            anchors.top: incidentRow.bottom
-                            anchors.topMargin: Theme.paddingMedium
-
-                            width: parent.width
-                            color: Theme.primaryColor
-                            horizontalAlignment: Qt.AlignHCenter
-                        }
+                    Component.onCompleted: {
 
                     }
 
                 }
 
-            }
+
+
+
+
+//            SilicaListView {
+//                id: incidentsListView
+
+//                height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
+//                width: parent.width
+//                anchors.left: parent.left
+//                anchors.right: parent.right
+
+//                clip: true
+
+//                model: ListModel {
+//                    id: trafficIncidentsModel
+//                }
+
+//                delegate: ListItem {
+//                    contentHeight: incidentItem.height + (2 * Theme.paddingMedium)
+//                    contentWidth: parent.width
+
+//                    onClicked: {
+//                        var selectedIncident = incidentsListView.model.get(index);
+//                        // pageStack.push(Qt.resolvedUrl("../pages/DetailsPage.qml"), { incident: selectedIncident }) // TODO page url
+//                    }
+
+//                    Item {
+//                        id: incidentItem
+//                        width: parent.width
+//                        height: incidentRow.height + incidentSeparator.height
+//                        y: Theme.paddingMedium
+
+//                        Row {
+//                            id: incidentRow
+//                            width: parent.width - (2 * Theme.horizontalPageMargin)
+//                            spacing: Theme.paddingMedium
+//                            anchors.verticalCenter: parent.verticalCenter
+//                            anchors.horizontalCenter: parent.horizontalCenter
+
+//                            // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
+//                            Column {
+//                                id: trafficIncidentColumn
+//                                width: parent.width // - (2 * Theme.horizontalPageMargin)
+//                                // x: Theme.horizontalPageMargin
+//                                height: /*firstRow.height + */ /*changeValuesRow.height + iconLabelRow.height +*/ directionRow.height + detailsRow.height
+//                                /* + secondRow.height*/
+//                                        //+ changeValuesRow.height
+//                                        //+ (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
+
+//                                anchors.verticalCenter: parent.verticalCenter
+
+////                                IconLabelRow {
+////                                    id: iconLabelRow
+////                                    lineType: Functions.resolveIconForLines(affected)
+////                                    affectedLines: Functions.getListOfAffectedLines(affected)
+////                                }
+
+//                                Row {
+//                                    id: directionRow
+//                                    width: parent.width
+//                                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+
+//                                    Label {
+//                                        id: validityLabel
+//                                        width: parent.width
+//                                        height: parent.height
+//                                        text: headline.from + " -> " + headline.to
+
+//                                            //"A7 Karlsruhe -> Stuttgart"
+//                                            // Functions.createAvailabilityLabel(_fromFormatted, _toFormatted)
+//                                            // qsTr("On %1 until %2 ").arg(_fromFormatted).arg(_toFormatted)
+//                                        truncationMode: TruncationMode.Fade// TODO check for very long texts
+//                                        // elide: Text.ElideRight
+//                                        color: Theme.primaryColor
+//                                        font.pixelSize: Theme.fontSizeExtraSmall
+//                                        font.bold: true
+//                                        horizontalAlignment: Text.AlignLeft
+//                                    }
+//                                }
+
+//                                Row {
+//                                    id: detailsRow
+//                                    width: parent.width
+//                                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
+
+//                                    Label {
+//                                        width: parent.width
+//                                        height: parent.height
+//                                        text: details
+//                                            // Functions.determineQuoteDate(quoteTimestamp)
+//                                        truncationMode: TruncationMode.Fade
+//                                        color: Theme.primaryColor
+//                                        font.pixelSize: Theme.fontSizeExtraSmall
+//                                        horizontalAlignment: Text.AlignLeft
+//                                    }
+
+//                                }
+
+//                            }
+
+//                        }
+
+//                        Separator {
+//                            id: incidentSeparator
+//                            anchors.top: incidentRow.bottom
+//                            anchors.topMargin: Theme.paddingMedium
+
+//                            width: parent.width
+//                            color: Theme.primaryColor
+//                            horizontalAlignment: Qt.AlignHCenter
+//                        }
+
+//                    }
+
+//                }
+
+//            }
+
+
+
+
+
         }
     }
 
