@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
 
 import "pages"
 import "cover"
@@ -11,6 +12,15 @@ ApplicationWindow {
     id: app
 
     signal trafficDataChanged(var trafficData, string error, date lastUpdate)
+
+    // Global Settings Storage
+    ConfigurationGroup {
+        id: trafficDataSettings
+        path: "/apps/harbour-adac-traffic/settings"
+
+        property int country: Constants.COUNTRY_GERMANY
+    }
+
 
     function getDataBackend(backendId) {
         if (Constants.BACKEND_ADAC === backendId) {

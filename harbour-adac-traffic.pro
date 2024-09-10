@@ -27,6 +27,7 @@ DISTFILES += qml/harbour-adac-traffic.qml \
     qml/js/functions.js \
     qml/pages/OverviewPage.qml \
     qml/icons/de/a8.svg \
+    qml/pages/SettingsPage.qml \
     rpm/harbour-adac-traffic.changes.in \
     rpm/harbour-adac-traffic.changes.run.in \
     rpm/harbour-adac-traffic.spec \

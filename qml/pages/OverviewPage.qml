@@ -57,8 +57,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("Settings")
-                onClicked: {
-                }
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
             }
             MenuItem {
                 text: qsTr("Reload Traffic Data")

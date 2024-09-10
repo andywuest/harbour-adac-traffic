@@ -43,4 +43,42 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <extracomment>SettingsPage settings title</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Country</source>
+        <extracomment>SettingsPage country</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Country for which you want the traffic data</source>
+        <extracomment>SettingsPage download strategy explanation</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Germany</source>
+        <extracomment>SettingsPage country Germany</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Austria</source>
+        <extracomment>SettingsPage country Austria</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switzerland</source>
+        <extracomment>SettingsPage country Switzerland</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Italy</source>
+        <extracomment>SettingsPage country Italy</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
