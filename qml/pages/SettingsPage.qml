@@ -14,6 +14,20 @@ import "../js/functions.js" as Functions
 Page {
     id: settingsPage
 
+    onStatusChanged: {
+        if (status === PageStatus.Deactivating) {
+            Functions.log("[SettingsPage] store settings!");
+            trafficDataSettings.streetName = streetNameTextField.text;
+            trafficDataSettings.sync();
+            Functions.log("[SettingsPage] new streetName : " + trafficDataSettings.streetName);
+            // TODO
+//            if (reloadSecurities) {
+//                reloadOverviewSecurities();
+//            }
+        }
+    }
+
+
     SilicaFlickable {
         id: settingsFlickable
         anchors.fill: parent
@@ -64,10 +78,12 @@ Page {
             }
 
 
-
-
-
-
+            TextField {
+                id: streetNameTextField
+                width: parent.width
+                text: trafficDataSettings.streetName
+                placeholderText: qsTr("Name of autobahn / street")
+            }
 
         }
 

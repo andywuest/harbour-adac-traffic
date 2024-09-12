@@ -14,10 +14,11 @@ ADACBackend::~ADACBackend() {
   qDebug() << "Shutting down ADAC Traffic Backend...";
 }
 
-void ADACBackend::getTrafficData() {
+void ADACBackend::getTrafficData(QString country, QString streetName) {
  qDebug() << "ADACBackend::getTrafficData";
+ qDebug() << "country : " << country << ", streetName : " << streetName;
 
- QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL));
+ QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL), country, streetName);
 
  connectErrorSlot(reply);
  connect(reply, SIGNAL(finished()), this, SLOT(handleGetTrafficDataFinished()));
@@ -44,8 +45,10 @@ QString ADACBackend::processSearchResult(QByteArray searchReply) {
     return QString(searchReply);
 }
 
-QNetworkReply *ADACBackend::executePostRequest(const QUrl &url) {
+QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString country, const QString streetName) {
   qDebug() << "ADACBackend::executePostRequest " << url;
+  qDebug() << "country : " << country << ", streetName : " << streetName << " !";
+
   QNetworkRequest request(url);
   request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
   request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
@@ -53,7 +56,7 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url) {
 
   QString postBody(ADAC_POST_BODY);
 
-  QByteArray finalPostBody = postBody.arg("D", "", "A7", GRAPHQL_QUERY).toUtf8();
+  QByteArray finalPostBody = postBody.arg(country, "", streetName, GRAPHQL_QUERY).toUtf8();
 
   QString encodedPass = QString(QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5));
   QByteArray hash = QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5);
@@ -67,7 +70,7 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url) {
 
   request.setRawHeader("x-graph-query-hash", hash.toHex()); // TODO calculate
 
-  return manager->post(request, postBody.arg("D", "", "A8").toUtf8());
+  return manager->post(request, finalPostBody/*postBody.arg(country, "", streetName).toUtf8()*/);
 }
 
 void ADACBackend::connectErrorSlot(QNetworkReply *reply) {

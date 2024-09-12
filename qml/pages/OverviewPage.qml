@@ -64,6 +64,7 @@ Page {
                 onClicked: {
                     loading = true;
                     errorOccured = false;
+                    console.log(">>> streetName : " + trafficDataSettings.streetName);
                     app.reloadTrafficData();
                 }
             }

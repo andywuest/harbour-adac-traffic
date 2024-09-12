@@ -12,7 +12,7 @@ public:
     explicit ADACBackend(QNetworkAccessManager *manager, QObject *parent = nullptr);
     ~ADACBackend();
 
-  Q_INVOKABLE virtual void getTrafficData(); // TODO add params
+  Q_INVOKABLE virtual void getTrafficData(QString country, QString streetName);
 
   Q_SIGNAL void requestError(const QString &errorMessage);
 
@@ -25,7 +25,7 @@ private slots:
 protected:
   QNetworkAccessManager *manager;
 
-  QNetworkReply *executePostRequest(const QUrl &url);
+  QNetworkReply *executePostRequest(const QUrl &url, const QString country, const QString streetName);
   void connectErrorSlot(QNetworkReply *reply);
   QString processSearchResult(QByteArray searchReply);
 

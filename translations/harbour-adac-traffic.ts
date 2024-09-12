@@ -80,5 +80,9 @@
         <extracomment>SettingsPage country Italy</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Name of autobahn / street</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
