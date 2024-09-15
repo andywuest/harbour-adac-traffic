@@ -13,6 +13,7 @@ import "../js/functions.js" as Functions
 
 Page {
     id: settingsPage
+    signal settingsChanged()
 
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
@@ -20,10 +21,7 @@ Page {
             trafficDataSettings.streetName = streetNameTextField.text;
             trafficDataSettings.sync();
             Functions.log("[SettingsPage] new streetName : " + trafficDataSettings.streetName);
-            // TODO
-//            if (reloadSecurities) {
-//                reloadOverviewSecurities();
-//            }
+            settingsChanged();
         }
     }
 

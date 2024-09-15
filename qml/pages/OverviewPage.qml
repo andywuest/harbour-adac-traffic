@@ -16,6 +16,11 @@ Page {
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
 
+    function receiveSettingsChanged() {
+        Functions.log("[OverviewPage] - settings changed received.");
+        app.reloadTrafficData();
+    }
+
     function trafficDataChanged(result, error, date) {
         Functions.log("[OverviewPage] - data has changed, error " + error + ", date : " + date);
         errorOccured = (error !== "");
@@ -57,7 +62,10 @@ Page {
             }
             MenuItem {
                 text: qsTr("Settings")
-                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+                onClicked: {
+                    var settingsPage = pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+                    settingsPage.settingsChanged.connect(receiveSettingsChanged)
+                }
             }
             MenuItem {
                 text: qsTr("Reload Traffic Data")
@@ -183,69 +191,150 @@ Page {
 
                         Column {
                             id: delegateCol
-                            width: parent.width - 2*Theme.horizontalPageMargin
+                            width: parent.width - 2 * Theme.horizontalPageMargin
                             height: childrenRect.height
+
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                                 verticalCenter: parent.verticalCenter
                             }
+
                             spacing: Theme.paddingMedium
 
                             Row {
-                                id: titleRow
                                 width: parent.width
-                                spacing: Theme.paddingSmall
 
-                                Image {
-                                   id: titleRowImage
-                                   width: parent.width * 1 / 4
-                                   source: "../icons/" + Functions.countryToIsoCode(streetSign.country) + "/" + street.toLowerCase() + ".svg"
-//                                   height: iconLabelRow.height
-//                                   width: iconLabelRow.height
-                                   fillMode: Image.PreserveAspectFit
-                                   anchors.verticalCenter: parent.verticalCenter
+                                Column {
+                                    width: parent.width * 1 / 6;
+
+                                    //height: childrenRect.height
+                                    Label {
+                                        width: parent.width
+                                        topPadding: Theme.paddingLarge
+
+                                        Image {
+                                           id: typeImage
+                                           width: Theme.iconSizeMedium
+                                           source: "../icons/type/baustelle.png"
+        //                                   height: iconLabelRow.height
+        //                                   width: iconLabelRow.height
+                                           fillMode: Image.PreserveAspectFit
+                                           anchors.verticalCenter: parent.verticalCenter
+                                        }
+                                    }
+
+
                                 }
 
                                 Column {
-                                    id: titleRowText
-                                    width: parent.width * 3 / 4
-                                    Label {
-                                        text: headline.text ? headline.text : headline.from + " -> " + headline.to
+                                    width: parent.width * 5 / 6;
+                                    // height: childrenRect.height
+
+                                    Row {
+                                        id: titleRow
+                                        width: parent.width
+                                        spacing: Theme.paddingSmall
+
+
+
+//                                        Column {
+//                                            id: titleRowText
+//                                            width: parent.width
+
+                                            Label {
+                                                width: parent.width * 1 / 4
+                                                Image {
+                                                   id: titleRowImage
+                                                   width: Theme.iconSizeSmall
+                                                   source: "../icons/" + Functions.countryToIsoCode(streetSign.country) + "/" + street.toLowerCase() + ".svg"
+                //                                   height: iconLabelRow.height
+                //                                   width: iconLabelRow.height
+                                                   fillMode: Image.PreserveAspectFit
+                                                   anchors.verticalCenter: parent.verticalCenter
+                                                }
+
+                                            }
+
+                                            Label {
+                                                width: parent.width * 3 / 4
+                                                text: headline.text ? headline.text : headline.from + " -> " + headline.to
+                                            }
+
+//                                        }
+
+//                                        Label {
+//                                            text: "<style>" +
+//                                                  "a { color: %1 }".arg(Theme.highlightColor) +
+//                                                  "</style>" +
+//                                                  "<p>" + details + "</p>"
+//                                            width: parent.width
+//                                            baseUrl: "https://asdfasdfa.sdde.de"
+//                                            textFormat: Text.RichText
+//                                            wrapMode: Text.Wrap
+//                                            font.pixelSize: Theme.fontSizeSmall
+//                                        }
+
+//                                        Row {
+//                                            id: timeLossRow
+//                                            width: parent.width
+//                                            spacing: Theme.paddingSmall
+//                                            visible: true//timeLoss ? true : false
+
+//                                            IconButton {
+//                                               id: timeLossIcon
+//                                               width: parent.width * 1 / 4 // TODO witdht
+//                                               icon.source: "image://theme/icon-s-time" + "?" + Theme.primaryColor
+//                                            }
+
+//                                            Column {
+//                                                id: timeLossTextColumn
+//                                                width: parent.width  * 3 / 4 // TODO WIDTH
+//                                                Label {
+//                                                    text: qsTr("Zeitverlust") + ": " + timeLoss
+//                                                }
+//                                            }
+//                                        }
+
                                     }
-                                }
-                            }
 
-                            Label {
-                                text: "<style>" +
-                                      "a { color: %1 }".arg(Theme.highlightColor) +
-                                      "</style>" +
-                                      "<p>" + details + "</p>"
-                                width: parent.width
-                                baseUrl: "https://asdfasdfa.sdde.de"
-                                textFormat: Text.RichText
-                                wrapMode: Text.Wrap
-                                font.pixelSize: Theme.fontSizeSmall
-                            }
 
-                            Row {
-                                id: timeLossRow
-                                width: parent.width
-                                spacing: Theme.paddingSmall
-                                visible: timeLoss ? true : false
-
-                                IconButton {
-                                   id: timeLossIcon
-                                   width: parent.width * 1 / 4 // TODO witdht
-                                   icon.source: "image://theme/icon-s-time" + "?" + Theme.primaryColor
-                                }
-
-                                Column {
-                                    id: timeLossTextColumn
-                                    width: parent.width  * 3 / 4 // TODO WIDTH
                                     Label {
-                                        text: qsTr("Zeitverlust") + ": " + timeLoss
+                                        text: "<style>" +
+                                              "a { color: %1 }".arg(Theme.highlightColor) +
+                                              "</style>" +
+                                              "<p>" + details + "</p>"
+                                        width: parent.width
+                                        baseUrl: "https://asdfasdfa.sdde.de"
+                                        textFormat: Text.RichText
+                                        wrapMode: Text.Wrap
+                                        font.pixelSize: Theme.fontSizeSmall
                                     }
+
+                                    Row {
+                                        id: timeLossRow
+                                        width: parent.width
+                                        spacing: Theme.paddingSmall
+                                        visible: true//timeLoss ? true : false
+
+                                        IconButton {
+                                           id: timeLossIcon
+                                           width: parent.width * 1 / 4 // TODO witdht
+                                           icon.source: "image://theme/icon-s-time" + "?" + Theme.primaryColor
+                                        }
+
+                                        Column {
+                                            id: timeLossTextColumn
+                                            width: parent.width  * 3 / 4 // TODO WIDTH
+                                            Label {
+                                                text: qsTr("Zeitverlust") + ": " + timeLoss
+                                            }
+                                        }
+                                    }
+
+
+
                                 }
+
                             }
 
                             Separator {
