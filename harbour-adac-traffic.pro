@@ -21,6 +21,9 @@ SOURCES += src/harbour-adac-traffic.cpp \
 DEFINES += VERSION_NUMBER=\\\"$$(VERSION_NUMBER)\\\"
 
 DISTFILES += qml/harbour-adac-traffic.qml \
+    qml/components/Footer.qml \
+    qml/components/Header.qml \
+    qml/components/IncidentSign.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
     qml/cover/CoverPage.qml \   
     qml/js/constants.js \

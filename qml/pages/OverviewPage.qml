@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../components"
 import "../components/thirdparty"
 
 import "../js/functions.js" as Functions
@@ -28,12 +29,18 @@ Page {
         trafficIncidentsModel.clear()
         trafficDataPresent = false;
 
-        incidentsHeader.description = "TODO" // getLastUpdateString();
+        // TODO multipage fetching
+
+        incidentsHeader.description = Functions.resolveCountryName(trafficDataSettings.country)
+                + " - '" + trafficDataSettings.streetName + "'";
 
         if (!errorOccured) {
             trafficDataPresent = (result.data.trafficNews.items.length > 0);
             for (var i = 0; i < result.data.trafficNews.items.length; i++)   {
                 var trafficIncident = result.data.trafficNews.items[i];
+                if (!trafficIncident.timeLoss) {
+                    trafficIncident.timeLoss = "";
+                }
                 trafficIncidentsModel.append(trafficIncident);
                 Functions.log("[OverviewPage] added traffic incident " + trafficIncident.details);
             }
@@ -127,354 +134,95 @@ Page {
             }
 
             SilicaListView {
-                    id: incidentsListView
-                    height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
-                    clip: true
+                id: incidentsListView
+                height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
+                clip: true
 
-//                    header: PageHeader {
-//                        id: pageHeader
-//                        title: "title"
-//                        description: "tags"
+                width: parent.width
 
-//                    }
+                VerticalScrollDecorator {}
 
-//                    footer: Item {
-//                        width: parent.width
-//                        height: Theme.horizontalPageMargin
-//                    }
-
-                    width: parent.width
-                    // height: parent.height
-
-                    // anchors.top: header.bottom
-
-
-                    VerticalScrollDecorator {}
-
-    //                PullDownMenu{
-    //                    MenuItem {
-    //                        text: qsTr("Copy link to clipboard")
-    //                        onClicked: Clipboard.text = source
-    //                    }
-    //                    MenuItem {
-    //                        text: qsTr("Open in external browser")
-    //                        onClicked: Qt.openUrlExternally(source)
-    //                    }
-    //                    MenuItem {
-    //                        text: qsTr("Open directly")
-    //                        onClicked: pageStack.push("webView.qml", {"pageurl": source});
-
-    //                    }
-    //                    MenuItem {
-    //                        text: qsTr("Search thread")
-    //                        onClicked: pageStack.push("SearchPage.qml", {"searchid": topicid, "aTitle": aTitle });
-
-    //                    }
-    //                }
-
-    //                BusyIndicator {
-    //                    id: vplaceholder
-    //                    running: commodel.count == 0
-    //                    anchors.centerIn: parent
-    //                    size: BusyIndicatorSize.Large
-    //                }
-
-                    model: ListModel {
-                        id: trafficIncidentsModel
-                    }
-
-                    delegate: ListItem {
-                        // enabled: menu.hasContent
-                        width: parent.width
-                        contentHeight:  delegateCol.height + Theme.paddingLarge
-                        anchors.horizontalCenter: parent.horizontalCenter
-
-                        Column {
-                            id: delegateCol
-                            width: parent.width - 2 * Theme.horizontalPageMargin
-                            height: childrenRect.height
-
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                                verticalCenter: parent.verticalCenter
-                            }
-
-                            spacing: Theme.paddingMedium
-
-                            Row {
-                                width: parent.width
-
-                                Column {
-                                    width: parent.width * 1 / 6;
-
-                                    //height: childrenRect.height
-                                    Label {
-                                        width: parent.width
-                                        topPadding: Theme.paddingLarge
-
-                                        Image {
-                                           id: typeImage
-                                           width: Theme.iconSizeMedium
-                                           source: "../icons/type/baustelle.png"
-        //                                   height: iconLabelRow.height
-        //                                   width: iconLabelRow.height
-                                           fillMode: Image.PreserveAspectFit
-                                           anchors.verticalCenter: parent.verticalCenter
-                                        }
-                                    }
-
-
-                                }
-
-                                Column {
-                                    width: parent.width * 5 / 6;
-                                    // height: childrenRect.height
-
-                                    Row {
-                                        id: titleRow
-                                        width: parent.width
-                                        spacing: Theme.paddingSmall
-
-
-
-//                                        Column {
-//                                            id: titleRowText
-//                                            width: parent.width
-
-                                            Label {
-                                                width: parent.width * 1 / 4
-                                                Image {
-                                                   id: titleRowImage
-                                                   width: Theme.iconSizeSmall
-                                                   source: "../icons/" + Functions.countryToIsoCode(streetSign.country) + "/" + street.toLowerCase() + ".svg"
-                //                                   height: iconLabelRow.height
-                //                                   width: iconLabelRow.height
-                                                   fillMode: Image.PreserveAspectFit
-                                                   anchors.verticalCenter: parent.verticalCenter
-                                                }
-
-                                            }
-
-                                            Label {
-                                                width: parent.width * 3 / 4
-                                                text: headline.text ? headline.text : headline.from + " -> " + headline.to
-                                            }
-
-//                                        }
-
-//                                        Label {
-//                                            text: "<style>" +
-//                                                  "a { color: %1 }".arg(Theme.highlightColor) +
-//                                                  "</style>" +
-//                                                  "<p>" + details + "</p>"
-//                                            width: parent.width
-//                                            baseUrl: "https://asdfasdfa.sdde.de"
-//                                            textFormat: Text.RichText
-//                                            wrapMode: Text.Wrap
-//                                            font.pixelSize: Theme.fontSizeSmall
-//                                        }
-
-//                                        Row {
-//                                            id: timeLossRow
-//                                            width: parent.width
-//                                            spacing: Theme.paddingSmall
-//                                            visible: true//timeLoss ? true : false
-
-//                                            IconButton {
-//                                               id: timeLossIcon
-//                                               width: parent.width * 1 / 4 // TODO witdht
-//                                               icon.source: "image://theme/icon-s-time" + "?" + Theme.primaryColor
-//                                            }
-
-//                                            Column {
-//                                                id: timeLossTextColumn
-//                                                width: parent.width  * 3 / 4 // TODO WIDTH
-//                                                Label {
-//                                                    text: qsTr("Zeitverlust") + ": " + timeLoss
-//                                                }
-//                                            }
-//                                        }
-
-                                    }
-
-
-                                    Label {
-                                        text: "<style>" +
-                                              "a { color: %1 }".arg(Theme.highlightColor) +
-                                              "</style>" +
-                                              "<p>" + details + "</p>"
-                                        width: parent.width
-                                        baseUrl: "https://asdfasdfa.sdde.de"
-                                        textFormat: Text.RichText
-                                        wrapMode: Text.Wrap
-                                        font.pixelSize: Theme.fontSizeSmall
-                                    }
-
-                                    Row {
-                                        id: timeLossRow
-                                        width: parent.width
-                                        spacing: Theme.paddingSmall
-                                        visible: true//timeLoss ? true : false
-
-                                        IconButton {
-                                           id: timeLossIcon
-                                           width: parent.width * 1 / 4 // TODO witdht
-                                           icon.source: "image://theme/icon-s-time" + "?" + Theme.primaryColor
-                                        }
-
-                                        Column {
-                                            id: timeLossTextColumn
-                                            width: parent.width  * 3 / 4 // TODO WIDTH
-                                            Label {
-                                                text: qsTr("Zeitverlust") + ": " + timeLoss
-                                            }
-                                        }
-                                    }
-
-
-
-                                }
-
-                            }
-
-                            Separator {
-                                color: Theme.highlightColor
-                                width: parent.width
-                                horizontalAlignment: Qt.AlignHCenter
-                            }
-
-                        }
-                    }
-
-                    Component.onCompleted: {
-
-                    }
-
+                model: ListModel {
+                    id: trafficIncidentsModel
                 }
 
+                delegate: ListItem {
+                    // enabled: menu.hasContent
+                    width: parent.width
+                    contentHeight:  delegateCol.height + Theme.paddingLarge
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Column {
+                        id: delegateCol
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                        height: childrenRect.height
+
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        spacing: Theme.paddingMedium
+
+                        Row {
+                            width: parent.width
+
+                            Column {
+                                width: parent.width * 1 / 6;
+
+                                IncidentSign {
+                                    width: parent.width
+                                    incidenTypeIconPath: Functions.determineIncidentTypeIconPath(type)
+                                }
+
+                            }
+
+                            Column {
+                                width: parent.width * 5 / 6;
+
+                                    Header {
+                                        id: header
+                                        width: parent.width
+                                        headlineIconPath: Functions.determineIconPath(streetSign.country, street);
+                                        headlineText: Functions.determineHeadlineText(headline);
+                                    }
 
 
+                                Label {
+                                    text: "<style>" +
+                                          "a { color: %1 }".arg(Theme.highlightColor) +
+                                          "</style>" +
+                                          "<p>" + details + "</p>"
+                                    width: parent.width
+                                    baseUrl: "https://asdfasdfa.sdde.de"
+                                    textFormat: Text.RichText
+                                    wrapMode: Text.Wrap
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    topPadding: Theme.paddingSmall
+                                    bottomPadding: footer.visible ? Theme.paddingSmall : 0 // TODO padding
+                                }
 
+                                Footer {
+                                    id: footer
+                                    width: parent.width
+                                    visible: timeLoss.length > 0
+                                    timeLossText: qsTr("Zeitverlust: %1").arg(timeLoss)
+                                }
+                            }
+                        }
 
-//            SilicaListView {
-//                id: incidentsListView
+                        Separator {
+                            color: Theme.highlightColor
+                            width: parent.width
+                            horizontalAlignment: Qt.AlignHCenter
+                        }
+                    }
+                }
 
-//                height: pageFlickable.height - incidentsHeader.height - Theme.paddingMedium
-//                width: parent.width
-//                anchors.left: parent.left
-//                anchors.right: parent.right
+                Component.onCompleted: {
+                }
 
-//                clip: true
-
-//                model: ListModel {
-//                    id: trafficIncidentsModel
-//                }
-
-//                delegate: ListItem {
-//                    contentHeight: incidentItem.height + (2 * Theme.paddingMedium)
-//                    contentWidth: parent.width
-
-//                    onClicked: {
-//                        var selectedIncident = incidentsListView.model.get(index);
-//                        // pageStack.push(Qt.resolvedUrl("../pages/DetailsPage.qml"), { incident: selectedIncident }) // TODO page url
-//                    }
-
-//                    Item {
-//                        id: incidentItem
-//                        width: parent.width
-//                        height: incidentRow.height + incidentSeparator.height
-//                        y: Theme.paddingMedium
-
-//                        Row {
-//                            id: incidentRow
-//                            width: parent.width - (2 * Theme.horizontalPageMargin)
-//                            spacing: Theme.paddingMedium
-//                            anchors.verticalCenter: parent.verticalCenter
-//                            anchors.horizontalCenter: parent.horizontalCenter
-
-//                            // TODO custom - hier noch pruefen, was an margins noch machbar, sinnvoll ist
-//                            Column {
-//                                id: trafficIncidentColumn
-//                                width: parent.width // - (2 * Theme.horizontalPageMargin)
-//                                // x: Theme.horizontalPageMargin
-//                                height: /*firstRow.height + */ /*changeValuesRow.height + iconLabelRow.height +*/ directionRow.height + detailsRow.height
-//                                /* + secondRow.height*/
-//                                        //+ changeValuesRow.height
-//                                        //+ (watchlistSettings.showPerformanceRow ? performanceRow.height : 0)
-
-//                                anchors.verticalCenter: parent.verticalCenter
-
-////                                IconLabelRow {
-////                                    id: iconLabelRow
-////                                    lineType: Functions.resolveIconForLines(affected)
-////                                    affectedLines: Functions.getListOfAffectedLines(affected)
-////                                }
-
-//                                Row {
-//                                    id: directionRow
-//                                    width: parent.width
-//                                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
-
-//                                    Label {
-//                                        id: validityLabel
-//                                        width: parent.width
-//                                        height: parent.height
-//                                        text: headline.from + " -> " + headline.to
-
-//                                            //"A7 Karlsruhe -> Stuttgart"
-//                                            // Functions.createAvailabilityLabel(_fromFormatted, _toFormatted)
-//                                            // qsTr("On %1 until %2 ").arg(_fromFormatted).arg(_toFormatted)
-//                                        truncationMode: TruncationMode.Fade// TODO check for very long texts
-//                                        // elide: Text.ElideRight
-//                                        color: Theme.primaryColor
-//                                        font.pixelSize: Theme.fontSizeExtraSmall
-//                                        font.bold: true
-//                                        horizontalAlignment: Text.AlignLeft
-//                                    }
-//                                }
-
-//                                Row {
-//                                    id: detailsRow
-//                                    width: parent.width
-//                                    height: Theme.fontSizeExtraSmall + Theme.paddingSmall
-
-//                                    Label {
-//                                        width: parent.width
-//                                        height: parent.height
-//                                        text: details
-//                                            // Functions.determineQuoteDate(quoteTimestamp)
-//                                        truncationMode: TruncationMode.Fade
-//                                        color: Theme.primaryColor
-//                                        font.pixelSize: Theme.fontSizeExtraSmall
-//                                        horizontalAlignment: Text.AlignLeft
-//                                    }
-
-//                                }
-
-//                            }
-
-//                        }
-
-//                        Separator {
-//                            id: incidentSeparator
-//                            anchors.top: incidentRow.bottom
-//                            anchors.topMargin: Theme.paddingMedium
-
-//                            width: parent.width
-//                            color: Theme.primaryColor
-//                            horizontalAlignment: Qt.AlignHCenter
-//                        }
-
-//                    }
-
-//                }
-
-//            }
-
-
-
-
-
+            }
         }
     }
 

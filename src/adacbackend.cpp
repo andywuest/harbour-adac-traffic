@@ -14,11 +14,11 @@ ADACBackend::~ADACBackend() {
   qDebug() << "Shutting down ADAC Traffic Backend...";
 }
 
-void ADACBackend::getTrafficData(QString country, QString streetName) {
+void ADACBackend::getTrafficData(QString country, QString streetName, bool showConstructionSites) {
  qDebug() << "ADACBackend::getTrafficData";
  qDebug() << "country : " << country << ", streetName : " << streetName;
 
- QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL), country, streetName);
+ QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL), country, streetName, showConstructionSites);
 
  connectErrorSlot(reply);
  connect(reply, SIGNAL(finished()), this, SLOT(handleGetTrafficDataFinished()));
@@ -45,9 +45,10 @@ QString ADACBackend::processSearchResult(QByteArray searchReply) {
     return QString(searchReply);
 }
 
-QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString country, const QString streetName) {
+QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString country, const QString streetName, bool showConstructionSites) {
   qDebug() << "ADACBackend::executePostRequest " << url;
-  qDebug() << "country : " << country << ", streetName : " << streetName << " !";
+  qDebug() << "country : " << country << ", streetName : " << streetName
+           << ", construction sites: " << showConstructionSites << " !";
 
   QNetworkRequest request(url);
   request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
@@ -56,7 +57,9 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString co
 
   QString postBody(ADAC_POST_BODY);
 
-  QByteArray finalPostBody = postBody.arg(country, "", streetName, GRAPHQL_QUERY).toUtf8();
+  QByteArray finalPostBody = postBody.arg(country, "", streetName,
+                                          showConstructionSites ? "true" : "false",
+                                          GRAPHQL_QUERY).toUtf8();
 
   QString encodedPass = QString(QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5));
   QByteArray hash = QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5);

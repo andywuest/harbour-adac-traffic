@@ -84,5 +84,15 @@
         <source>Name of autobahn / street</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show construction sites</source>
+        <extracomment>SettingsPage show construction sites</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Additionally display construction sites on the street.</source>
+        <extracomment>SettingsPage show constructions sites description</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

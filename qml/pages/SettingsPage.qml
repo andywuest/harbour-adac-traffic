@@ -75,6 +75,18 @@ Page {
                 }
             }
 
+            TextSwitch {
+                id: stockAlarmTextSwitch
+                //: SettingsPage show construction sites
+                text: qsTr("Show construction sites")
+                //: SettingsPage show constructions sites description
+                description: qsTr("Additionally display construction sites on the street.")
+                checked: trafficDataSettings.showConstructionSites
+                onCheckedChanged: {
+                    trafficDataSettings.showConstructionSites = checked
+                }
+            }
+
 
             TextField {
                 id: streetNameTextField

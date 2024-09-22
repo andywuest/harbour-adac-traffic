@@ -19,9 +19,9 @@ ApplicationWindow {
         path: "/apps/harbour-adac-traffic/settings"
 
         property int country: Constants.COUNTRY_GERMANY
+        property bool showConstructionSites: false
         property string streetName: ""
     }
-
 
     function getDataBackend(backendId) {
         if (Constants.BACKEND_ADAC === backendId) {
@@ -35,7 +35,7 @@ ApplicationWindow {
         var backend = getDataBackend(Constants.BACKEND_ADAC);
         disconnectSlots(backend);
         connectSlots(backend);
-        backend.getTrafficData("D", trafficDataSettings.streetName)
+        backend.getTrafficData("D", trafficDataSettings.streetName, trafficDataSettings.showConstructionSites)
     }
 
     function connectSlots(backend) {
