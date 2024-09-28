@@ -25,11 +25,12 @@ DISTFILES += qml/harbour-adac-traffic.qml \
     qml/components/Header.qml \
     qml/components/IncidentSign.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
-    qml/cover/CoverPage.qml \   
+    qml/cover/CoverPage.qml \    \
     qml/js/constants.js \
     qml/js/functions.js \
     qml/pages/OverviewPage.qml \
     qml/icons/de/a8.svg \
+    qml/icons/empty.svg \
     qml/icons/type/baustelle.png \
     qml/pages/SettingsPage.qml \
     rpm/harbour-adac-traffic.changes.in \
