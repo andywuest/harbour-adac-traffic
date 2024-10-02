@@ -2,6 +2,43 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>AboutPage</name>
+    <message>
+        <source>About ADAC Traffic</source>
+        <extracomment>AboutPage - Header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ADAC Traffic</source>
+        <extracomment>AboutPage - Name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Application shows public traffic jams in Germany, Austria, Italy and Switzerland using the ADAC Traffic API. ADAC Traffic is open source and licensed under the GPL v3.</source>
+        <extracomment>AboutPage text - about text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sources</source>
+        <extracomment>AboutPage - sources</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donations</source>
+        <extracomment>AboutPage - Donations</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you like my work why not buy me a beer?</source>
+        <extracomment>AboutPage - donations info</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate with PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>

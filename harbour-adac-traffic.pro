@@ -24,15 +24,23 @@ DISTFILES += qml/harbour-adac-traffic.qml \
     qml/components/Footer.qml \
     qml/components/Header.qml \
     qml/components/IncidentSign.qml \
+    qml/components/thirdparty/AboutDescription.qml \
+    qml/components/thirdparty/AboutIconLabel.qml \
     qml/components/thirdparty/LoadingIndicator.qml \
     qml/cover/CoverPage.qml \    \
     qml/js/constants.js \
     qml/js/functions.js \
+    qml/pages/AboutPage.qml \
     qml/pages/OverviewPage.qml \
-    qml/icons/de/a8.svg \
+    qml/pages/icons/github.svg \
+    qml/pages/icons/paypal.svg \
+    qml/icons/de/*.svg \
+    qml/icons/ch/*.svg \
+    qml/icons/type/*.svg \
     qml/icons/empty.svg \
     qml/icons/type/baustelle.png \
     qml/pages/SettingsPage.qml \
+    qml/pages/icons/github.svg \
     rpm/harbour-adac-traffic.changes.in \
     rpm/harbour-adac-traffic.changes.run.in \
     rpm/harbour-adac-traffic.spec \
