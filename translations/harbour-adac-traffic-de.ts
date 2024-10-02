@@ -53,34 +53,6 @@
     </message>
 </context>
 <context>
-    <name>O2</name>
-    <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload Traffic Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Traffic Incidents</source>
-        <extracomment>OverviewPage page header</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Currently there are no incidents reported.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zeitverlust: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>OverviewPage</name>
     <message>
         <source>Reload Traffic Data</source>

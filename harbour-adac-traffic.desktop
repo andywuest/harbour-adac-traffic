@@ -3,18 +3,14 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-adac-traffic
 Exec=harbour-adac-traffic
-Name=harbour-adac-traffic
-# translation example:
-# your app name in German locale (de)
-#
-# Remember to comment out the following line, if you do not want to use
-# a different app name in German locale (de).
-Name[de]=harbour-adac-traffic
+Name=ADAC Traffic
+Name[de]=ADAC Verkehrsmeldungen
+
+[X-HarbourBackup]
+BackupPathList=.local/share/harbour-adac-traffic/
+BackupConfigList=/apps/harbour-adac-traffic/
 
 [X-Sailjail]
-# Replace with your organization as a reverse domain name
-OrganizationName=org.myorg
-# ApplicationName does not have to be identical to Name
-ApplicationName=adac-traffic
-# Add the required permissions here
-Permissions=
+OrganizationName=de.andreas-wuest-it-consulting
+ApplicationName=harbour-adac-traffic
+Permissions=Internet
