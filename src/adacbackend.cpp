@@ -14,10 +14,10 @@ ADACBackend::~ADACBackend() {
   qDebug() << "Shutting down ADAC Traffic Backend...";
 }
 
-void ADACBackend::getTrafficData(const QString country, const QString state, const QString streetName, bool showConstructionSites) {
+void ADACBackend::getTrafficData(const QString country, const QString state, const QString streetName, bool showConstructionSites, int page) {
  qDebug() << "ADACBackend::getTrafficData";
 
- QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL), country, state, streetName, showConstructionSites);
+ QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL), country, state, streetName, showConstructionSites, page);
 
  connectErrorSlot(reply);
  connect(reply, SIGNAL(finished()), this, SLOT(handleGetTrafficDataFinished()));
@@ -44,12 +44,13 @@ QString ADACBackend::processSearchResult(QByteArray searchReply) {
     return QString(searchReply);
 }
 
-QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString country, const QString state, const QString streetName, bool showConstructionSites) {
+QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString country, const QString state, const QString streetName, bool showConstructionSites, int page) {
   qDebug() << "ADACBackend::executePostRequest " << url;
   qDebug() << "country : " << country;
   qDebug() << "federalState : " << state;
   qDebug() << " streetName : " << streetName;
   qDebug() << " showConstructionSites : " << showConstructionSites;
+  qDebug() << " page : " << page;
 
   QNetworkRequest request(url);
   request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
@@ -58,7 +59,7 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString co
 
   QString postBody(ADAC_POST_BODY);
 
-  QString postBodyString = postBody.arg(country, state, streetName, showConstructionSites ? "true" : "false",
+  QString postBodyString = postBody.arg(country, state, streetName, showConstructionSites ? "true" : "false", QString::number(page),
                                             GRAPHQL_QUERY);
 
   QByteArray finalPostBody = postBodyString.toUtf8();
@@ -67,13 +68,13 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString co
   QByteArray hash = QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5);
 
 //  qDebug() << encodedPass << endl;
-  qDebug() << "body : " << postBodyString << endl;
+  qDebug() << "body : " << postBodyString;
 //  qDebug() << QString(encodedPass.toUtf8().toHex()) << endl;
 //  qDebug() << QString(hash.toHex()) << endl;
 //  qDebug() << "length: " << finalPostBody.size() << endl;
 //  qDebug() << "length: " << finalPostBody.mid(410, finalPostBody.size() - 1) << endl;
 
-  request.setRawHeader("x-graph-query-hash", hash.toHex()); // TODO calculate
+  request.setRawHeader("x-graph-query-hash", hash.toHex());
 
   return manager->post(request, finalPostBody);
 }

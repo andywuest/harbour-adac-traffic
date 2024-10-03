@@ -10,10 +10,7 @@ Row {
     property int iconWidth: Theme.iconSizeSmallPlus + Theme.paddingMedium
 
     width: parent.width
-    spacing: Theme.paddingSmall
-    Component.onCompleted: {
-        console.log("width: " + iconLabel.visible);
-    }
+    spacing: Theme.paddingSmall  
 
     Label {
         id: iconLabel

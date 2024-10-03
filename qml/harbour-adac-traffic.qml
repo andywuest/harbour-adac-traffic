@@ -11,7 +11,9 @@ import "js/functions.js" as Functions
 ApplicationWindow {
     id: app
 
-    signal trafficDataChanged(var trafficData, string error, date lastUpdate)
+    signal trafficDataChanged(var trafficData, string error, date lastUpdate, bool clearData)
+    property int currentPage: 1
+
 
     // Global Settings Storage
     ConfigurationGroup {
@@ -31,14 +33,15 @@ ApplicationWindow {
         }
     }
 
-    function reloadTrafficData() {
-        Functions.log("[ApplicationWindow] - reloadTrafficData");
+    function reloadTrafficData(page) {
+        currentPage = page;
+        Functions.log("[ApplicationWindow] - reloadTrafficData - page : " + page);
         var backend = getDataBackend(Constants.BACKEND_ADAC);
         disconnectSlots(backend);
         connectSlots(backend);
         var state = (trafficDataSettings.country === Constants.COUNTRY_GERMANY) ? Constants.STATE_MAP[trafficDataSettings.state] : "";
         var country = Constants.COUNTRY_MAP[trafficDataSettings.country];
-        backend.getTrafficData(country, state, trafficDataSettings.streetName, trafficDataSettings.showConstructionSites)
+        backend.getTrafficData(country, state, trafficDataSettings.streetName, trafficDataSettings.showConstructionSites, page)
     }
 
     function connectSlots(backend) {
@@ -55,7 +58,15 @@ ApplicationWindow {
 
     function getTrafficDataResultHandler(result) {
       Functions.log("[ApplicationWindow] result : " + result);
-      trafficDataChanged(JSON.parse(result.toString()), "", new Date());
+      var jsonResult = JSON.parse(result.toString());
+      var numberOfResults = jsonResult.data.trafficNews.size;
+      Functions.log("[ApplicationWindow] getTrafficDataResultHandler - count  : " + numberOfResults);
+      var clearData = (currentPage == 1);
+      if (numberOfResults > (currentPage * 10)) {
+         reloadTrafficData(currentPage + 1);
+         Functions.log("[ApplicationWindow] getTrafficDataResultHandler - reloading next page " + (currentPage + 1));
+      }
+      trafficDataChanged(jsonResult, "", new Date(), clearData);
     }
 
     function errorResultHandler(result) {

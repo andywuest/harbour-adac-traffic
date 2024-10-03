@@ -19,14 +19,16 @@ Page {
 
     function receiveSettingsChanged() {
         Functions.log("[OverviewPage] - settings changed received.");
-        app.reloadTrafficData();
+        app.reloadTrafficData(1);
     }
 
-    function trafficDataChanged(result, error, date) {
-        Functions.log("[OverviewPage] - data has changed, error " + error + ", date : " + date);
+    function trafficDataChanged(result, error, date, clearData) {
+        Functions.log("[OverviewPage] - data has changed, error " + error + ", date : " + date + ", clearData : " + clearData);
         errorOccured = (error !== "");
         lastUpdate = new Date();
-        trafficIncidentsModel.clear();
+        if (clearData) {
+            trafficIncidentsModel.clear();
+        }
         trafficDataPresent = false;
         incidentsHeader.description = Functions.resolveCountryName(trafficDataSettings.country) + ": " + (trafficDataSettings.state > 0 ? Constants.STATE_MAP[trafficDataSettings.state] : "") + (trafficDataSettings.streetName.length > 0 ? " '" + trafficDataSettings.streetName + "'" : "");
         if (!errorOccured) {
@@ -43,7 +45,7 @@ Page {
                     trafficIncident.streetSign.country = "";
                 }
                 trafficIncidentsModel.append(trafficIncident);
-                Functions.log("[OverviewPage] added traffic incident " + trafficIncident.details);
+                // Functions.log("[OverviewPage] added traffic incident " + trafficIncident.details);
             }
         } else {
         }
@@ -55,7 +57,7 @@ Page {
     Component.onCompleted: {
         app.trafficDataChanged.connect(trafficDataChanged);
         loading = true;
-        app.reloadTrafficData();
+        app.reloadTrafficData(1);
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -88,7 +90,7 @@ Page {
                     loading = true;
                     errorOccured = false;
                     console.log(">>> streetName : " + trafficDataSettings.streetName);
-                    app.reloadTrafficData();
+                    app.reloadTrafficData(1);
                 }
             }
 

@@ -21,14 +21,17 @@ function countryToIsoCode(countryName) {
 }
 
 function hasStreetIcon(country, street) {
-    if (street && street.length > 0 && street.substring(0, 1) !== "I" && street.substring(0, 1) !== "L") {
+    if (street && street.length > 0) {
+        if (street.substring(0, 1) === "I" || street.substring(0, 1) === "L" || street.substring(0, 2) === "GM" || street.substring(0, 1) === "K") {
+            return false;
+        }
         return true;
     }
     return false;
 }
 
 function determineIconPath(country, street) {
-    if (!street || street.length === 0) {
+    if (!hasStreetIcon(country, street)) {
         return "../icons/empty.svg";
     }
     return "../icons/" + countryToIsoCode(country) + "/" + street.toLowerCase() + ".svg";
@@ -36,7 +39,7 @@ function determineIconPath(country, street) {
 
 function determineHeadlineText(headline, street) {
     var result = "";
-    if (street.substring(0, 1) === "I") {
+    if (street.substring(0, 1) === "I" || street.substring(0, 2) === "GM" || street.substring(0, 1) === "K") {
         result += street + " - ";
     }
     // TODO -> better icon for pointer

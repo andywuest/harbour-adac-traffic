@@ -3,8 +3,8 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-adac-traffic
 Exec=harbour-adac-traffic
-Name=ADAC Traffic
-Name[de]=ADAC Verkehrsmeldungen
+Name=Traffic News
+Name[de]=Verkehrsmeldungen
 
 [X-HarbourBackup]
 BackupPathList=.local/share/harbour-adac-traffic/
