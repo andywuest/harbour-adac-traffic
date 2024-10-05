@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="400px" height="240px" viewBox="0 0 200 120">
+	<defs/>
+	<rect id="border" style="fill :#FFFFFF; fill-rule :evenodd; stroke :#000000; stroke-width :0.50;" x="0.25" y="0.25" rx="10" ry="10" width="199.5" height="119.5"/>
+    <path id="blueback" style="fill :#003ABD; fill-rule :evenodd; stroke :none;" d="M 7,60 7,22 Q 7,20 10,19 L 98,5.1 Q 98,5 100,5 102,5 102,5.1 L 190,19 Q 193,20 193,22 L 193,98 Q 193,100 190,101 L 102,114.9 Q 102,115 100,115 98,115 98,114.9 L 10,101 Q 7,100 7,98"/>
+    <path id="number115" style="fill :#FFFFFF; fill-rule :evenodd; stroke :none;" d="M 61.28,94.18 V 36.97 L 51.68,43.99 V 33.74 L 61.28,26.77 H 70.98 V 94.18 H 61.28 z M 93.19,94.18 V 36.97 L 83.58,43.99 V 33.74 L 93.19,26.77 H 102.9 V 94.18 H 93.19 z M 114,63.16 V 26.77 H 149.8 V 36.42 H 123.1 V 51.61 Q 127.7,47.92 133.9,47.92 137.7,47.92 140.8,49.39 144,50.87 145.9,52.86 148.6,55.86 149.9,59.37 151.1,62.88 151.2,71.28 151.2,78.07 150.2,81.35 149.2,84.63 147,87.44 145,90.08 141.2,92.34 137.5,94.6 132.4,94.6 125.9,94.6 119.9,90.58 113.8,86.57 112.8,77.15 H 122.4 Q 124.1,85 132.1,85 139.1,85 140.3,80.15 141.5,75.3 141.5,70.54 141.5,64.96 139.6,61.26 137.7,57.57 131.8,57.57 126.2,57.57 123.1,63.16 H 114 z"/>
+</svg>
