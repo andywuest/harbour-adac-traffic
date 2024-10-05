@@ -1,23 +1,48 @@
-import QtQuick 2.0
+import "../components"
+import "../js/functions.js" as Functions
+import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Label {
-        id: label
+    id: coverPage
 
-        anchors.centerIn: parent
-        text: qsTr("My Cover")
+    function trafficNewsCountChangedResult(count) {
+        Functions.log("[CoverPage] - count : " + count);
+        trafficItemsCountText.text = "" + count;
     }
 
-    CoverActionList {
-        id: coverAction
+    Component.onCompleted: {
+        app.trafficNewsCountChanged.connect(trafficNewsCountChangedResult);
+    }
 
-        CoverAction {
-            iconSource: "image://theme/icon-cover-next"
-        }
+    Column {
+        anchors.fill: parent
+        anchors.margins: Theme.paddingLarge
+        spacing: Theme.paddingMedium
 
-        CoverAction {
-            iconSource: "image://theme/icon-cover-pause"
+        Row {
+            width: parent.width
+            spacing: Theme.paddingMedium
+
+            Text {
+                id: trafficItemsCountText
+
+                font.pixelSize: Theme.fontSizeHuge
+                color: Theme.primaryColor
+            }
+
+            Label {
+                id: trafficItemsText
+
+                font.pixelSize: Theme.fontSizeExtraSmall
+                width: parent.width - trafficItemsCountText.width - Theme.paddingMedium
+                wrapMode: Text.Wrap
+                anchors.verticalCenter: trafficItemsCountText.verticalCenter
+                maximumLineCount: 2
+                truncationMode: TruncationMode.Fade
+                text: qsTr("traffic news items")
+            }
+
         }
 
     }

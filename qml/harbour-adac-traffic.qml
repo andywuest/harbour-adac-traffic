@@ -12,6 +12,8 @@ ApplicationWindow {
     id: app
 
     signal trafficDataChanged(var trafficData, string error, date lastUpdate, bool clearData)
+    signal trafficNewsCountChanged(int count)
+
     property int currentPage: 1
 
 
@@ -67,6 +69,7 @@ ApplicationWindow {
          Functions.log("[ApplicationWindow] getTrafficDataResultHandler - reloading next page " + (currentPage + 1));
       }
       trafficDataChanged(jsonResult, "", new Date(), clearData);
+      trafficNewsCountChanged(numberOfResults);
     }
 
     function errorResultHandler(result) {

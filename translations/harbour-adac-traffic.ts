@@ -41,7 +41,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
+        <source>traffic news items</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

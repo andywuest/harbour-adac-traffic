@@ -10,7 +10,7 @@ Row {
     property int iconWidth: Theme.iconSizeSmallPlus + Theme.paddingMedium
 
     width: parent.width
-    spacing: Theme.paddingSmall  
+    spacing: Theme.paddingSmall
 
     Label {
         id: iconLabel
