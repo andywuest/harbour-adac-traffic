@@ -11,7 +11,7 @@ import "js/functions.js" as Functions
 ApplicationWindow {
     id: app
 
-    signal trafficDataChanged(var trafficData, string error, date lastUpdate, bool clearData)
+    signal trafficDataChanged(var trafficData, string error, date lastUpdate, bool clearData, bool lastPage)
     signal trafficNewsCountChanged(int count)
 
     property int currentPage: 1
@@ -64,11 +64,13 @@ ApplicationWindow {
       var numberOfResults = jsonResult.data.trafficNews.size;
       Functions.log("[ApplicationWindow] getTrafficDataResultHandler - count  : " + numberOfResults);
       var clearData = (currentPage == 1);
+      var lastPage = true;
       if (numberOfResults > (currentPage * 10)) {
+         lastPage = false;
          reloadTrafficData(currentPage + 1);
          Functions.log("[ApplicationWindow] getTrafficDataResultHandler - reloading next page " + (currentPage + 1));
       }
-      trafficDataChanged(jsonResult, "", new Date(), clearData);
+      trafficDataChanged(jsonResult, "", new Date(), clearData, lastPage);
       trafficNewsCountChanged(numberOfResults);
     }
 

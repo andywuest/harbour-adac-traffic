@@ -6,10 +6,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    // TODO multipage fetching
-    // TIODI
-    // incidentUpdateNotification.show(error)
-
     id: page
 
     property bool loading: false
@@ -22,7 +18,7 @@ Page {
         app.reloadTrafficData(1);
     }
 
-    function trafficDataChanged(result, error, date, clearData) {
+    function trafficDataChanged(result, error, date, clearData, lastPage) {
         Functions.log("[OverviewPage] - data has changed, error " + error + ", date : " + date + ", clearData : " + clearData);
         errorOccured = (error !== "");
         lastUpdate = new Date();
@@ -48,9 +44,13 @@ Page {
                 }
                 trafficIncidentsModel.append(trafficIncident);
             }
+
+            if (lastPage) {
+                loading = false;
+            }
         } else {
+            loading = false;
         }
-        loading = false;
     }
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
