@@ -16,7 +16,6 @@ ApplicationWindow {
 
     property int currentPage: 1
 
-
     // Global Settings Storage
     ConfigurationGroup {
         id: trafficDataSettings
@@ -76,7 +75,8 @@ ApplicationWindow {
 
     function errorResultHandler(result) {
         Functions.log("[ApplicationWindow] - result error : " + result);
-        trafficDataChanged({}, result, new Date());
+        trafficDataChanged({}, result, new Date(), true, true);
+        trafficNewsCountChanged(-1);
     }
 
     Component {

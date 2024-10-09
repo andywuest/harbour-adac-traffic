@@ -8,7 +8,7 @@ CoverBackground {
 
     function trafficNewsCountChangedResult(count) {
         Functions.log("[CoverPage] - count : " + count);
-        trafficItemsCountText.text = "" + count;
+        trafficItemsCountText.text = (count < 0 ? "--" : "" + count);
     }
 
     Component.onCompleted: {
@@ -29,6 +29,7 @@ CoverBackground {
 
                 font.pixelSize: Theme.fontSizeHuge
                 color: Theme.primaryColor
+                text: "--"
             }
 
             Label {

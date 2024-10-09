@@ -28,8 +28,6 @@ Page {
         trafficDataPresent = false;
         incidentsHeader.description = Functions.resolveCountryName(trafficDataSettings.country) + ": " + (trafficDataSettings.state > 0 ? Constants.STATE_MAP[trafficDataSettings.state] : "") + (trafficDataSettings.streetName.length > 0 ? " '" + trafficDataSettings.streetName + "'" : "");
         if (!errorOccured) {
-            // Functions.log("[OverviewPage] added traffic incident " + trafficIncident.details);
-
             trafficDataPresent = (result.data.trafficNews.items.length > 0);
             for (var i = 0; i < result.data.trafficNews.items.length; i++) {
                 var trafficIncident = result.data.trafficNews.items[i];
@@ -44,10 +42,9 @@ Page {
                 }
                 trafficIncidentsModel.append(trafficIncident);
             }
-
-            if (lastPage) {
+            if (lastPage)
                 loading = false;
-            }
+
         } else {
             loading = false;
         }
