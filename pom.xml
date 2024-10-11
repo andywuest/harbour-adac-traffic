@@ -13,7 +13,7 @@
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
-        <version>3.0</version>
+        <version>4.6</version>
         <configuration>
           <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
           <!--  <header>license-header.txt</header>    -->
@@ -39,7 +39,7 @@
           <execution>
             <id>first</id>
             <goals>
-              <goal>check</goal>
+              <goal>format</goal>
             </goals>
             <phase>process-sources</phase>
           </execution>

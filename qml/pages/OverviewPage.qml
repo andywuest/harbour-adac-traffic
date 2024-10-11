@@ -1,3 +1,20 @@
+/*
+ * harbour-adac-traffic - Sailfish OS Version
+ * Copyright © 2024 Andreas Wüst (andreas.wuest.freelancer@gmail.com)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 import "../components"
 import "../components/thirdparty"
 import "../js/constants.js" as Constants
@@ -12,9 +29,6 @@ Page {
     property bool errorOccured: false
     property bool trafficDataPresent: false
     property date lastUpdate
-
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
-    allowedOrientations: Orientation.All
 
     function receiveSettingsChanged() {
         Functions.log("[OverviewPage] - settings changed received.");
@@ -49,19 +63,21 @@ Page {
                 loading = false;
 
         } else {
-            trafficDataUpdateNotification.show(error)
+            trafficDataUpdateNotification.show(error);
             loading = false;
         }
     }
 
-    AppNotification {
-        id: trafficDataUpdateNotification
-    }
-
+    // The effective value will be restricted by ApplicationWindow.allowedOrientations
+    allowedOrientations: Orientation.All
     Component.onCompleted: {
         app.trafficDataChanged.connect(trafficDataChanged);
         loading = true;
         app.reloadTrafficData(1);
+    }
+
+    AppNotification {
+        id: trafficDataUpdateNotification
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -135,6 +151,7 @@ Page {
                     textFormat: Text.RichText
                     text: qsTr("No traffic news reported for the search criteria.")
                 }
+
             }
 
             Column {
@@ -155,6 +172,7 @@ Page {
                     textFormat: Text.RichText
                     text: qsTr("Error loading traffic news.")
                 }
+
             }
 
             SilicaListView {
