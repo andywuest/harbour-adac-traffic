@@ -64,10 +64,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Currently there are no incidents reported.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -77,6 +73,14 @@
     </message>
     <message>
         <source>Zeitverlust: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No traffic news reported for the search criteria.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error loading traffic news.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

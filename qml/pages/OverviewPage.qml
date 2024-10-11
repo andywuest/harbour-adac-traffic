@@ -13,6 +13,9 @@ Page {
     property bool trafficDataPresent: false
     property date lastUpdate
 
+    // The effective value will be restricted by ApplicationWindow.allowedOrientations
+    allowedOrientations: Orientation.All
+
     function receiveSettingsChanged() {
         Functions.log("[OverviewPage] - settings changed received.");
         app.reloadTrafficData(1);
@@ -46,12 +49,15 @@ Page {
                 loading = false;
 
         } else {
+            trafficDataUpdateNotification.show(error)
             loading = false;
         }
     }
 
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
-    allowedOrientations: Orientation.All
+    AppNotification {
+        id: trafficDataUpdateNotification
+    }
+
     Component.onCompleted: {
         app.trafficDataChanged.connect(trafficDataChanged);
         loading = true;
@@ -97,17 +103,6 @@ Page {
         // Place our content in a Column. The PageHeader is always placed at the top
         // of the page, followed by our content.
         Column {
-            //            Timer {
-            //                id: lastUpdateUpdater
-            //                interval: 60000
-            //                running: true
-            //                repeat: true
-            //                onTriggered: {
-            //                    Functions.log("[OverviewPage] - updating last update string ")
-            //                    incidentsHeader.description = getLastUpdateString();
-            //                }
-            //            }
-
             id: column
 
             width: parent.width
@@ -138,9 +133,28 @@ Page {
                     width: parent.width - 2 * x
                     wrapMode: Text.Wrap
                     textFormat: Text.RichText
-                    text: qsTr("Currently there are no incidents reported.")
+                    text: qsTr("No traffic news reported for the search criteria.")
                 }
+            }
 
+            Column {
+                id: errorColumn
+
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
+                height: parent.height
+                spacing: Theme.paddingSmall
+                visible: errorOccured
+
+                Label {
+                    topPadding: Theme.paddingLarge
+                    horizontalAlignment: Text.AlignHCenter
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - 2 * x
+                    wrapMode: Text.Wrap
+                    textFormat: Text.RichText
+                    text: qsTr("Error loading traffic news.")
+                }
             }
 
             SilicaListView {
