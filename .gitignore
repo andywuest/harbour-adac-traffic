@@ -1,2 +1,4 @@
 /harbour-adac-traffic.pro.user
 /.idea/
+/target/
+**/*_original.png
