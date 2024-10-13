@@ -4,21 +4,6 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <source>About ADAC Traffic</source>
-        <extracomment>AboutPage - Header</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ADAC Traffic</source>
-        <extracomment>AboutPage - Name</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Application shows public traffic jams in Germany, Austria, Italy and Switzerland using the ADAC Traffic API. ADAC Traffic is open source and licensed under the GPL v3.</source>
-        <extracomment>AboutPage text - about text</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sources</source>
         <extracomment>AboutPage - sources</extracomment>
         <translation type="unfinished"></translation>
@@ -35,6 +20,21 @@
     </message>
     <message>
         <source>Donate with PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About Traffic News</source>
+        <extracomment>AboutPage - Header</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traffic News</source>
+        <extracomment>AboutPage - Name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Application shows public traffic news in Germany, Austria, Italy and Switzerland using the ADAC Traffic API. Traffic News is open source and licensed under the GPL v3.</source>
+        <extracomment>AboutPage text - about text</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

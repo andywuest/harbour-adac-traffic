@@ -50,7 +50,7 @@ Page {
 
             PageHeader {
                 //: AboutPage - Header
-                title: qsTr("About ADAC Traffic")
+                title: qsTr("About Traffic News")
             }
 
             Image {
@@ -72,7 +72,7 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraLarge
                 color: Theme.secondaryHighlightColor
                 //: AboutPage - Name
-                text: qsTr("ADAC Traffic")
+                text: qsTr("Traffic News")
             }
 
             Label {
@@ -88,7 +88,7 @@ Page {
 
             AboutDescription {
                 //: AboutPage text - about text
-                description: qsTr("Application shows public traffic jams in Germany, Austria, Italy and Switzerland using the ADAC Traffic API. ADAC Traffic is open source and licensed under the GPL v3.")
+                description: qsTr("Application shows public traffic news in Germany, Austria, Italy and Switzerland using the ADAC Traffic API. Traffic News is open source and licensed under the GPL v3.")
             }
 
             SectionHeader {

@@ -25,7 +25,7 @@ function hasStreetIcon(country, street) {
         if (street.substring(0, 1) === "I" || street.substring(0, 1) === "L" || street.substring(0, 2) === "GM"
                 || street.substring(0, 1) === "K" || street.substring(0, 2) === "GF" || street.substring(0, 2) === "GN"
                 || street.substring(0, 1) === "S" || street.substring(0, 2) === "GD" || street.substring(0, 2) === "GS"
-                || street.substring(0, 2) === "GO") {
+                || street.substring(0, 2) === "GO" || street.substring(0, 2) === "MN") {
             return false;
         }
         return true;
@@ -45,7 +45,8 @@ function determineHeadlineText(headline, street) {
     if (street.substring(0, 1) === "I" || street.substring(0, 2) === "GM" || street.substring(0, 2) === "GN"
             || street.substring(0, 1) === "K" || street.substring(0, 2) === "GF"
             || street.substring(0, 1) === "S" || street.substring(0, 2) === "GD"
-            || street.substring(0, 2) === "GS" || street.substring(0, 2) === "GO") {
+            || street.substring(0, 2) === "GS" || street.substring(0, 2) === "GO"
+            || street.substring(0, 2) === "MN") {
         result += street + " - ";
     }
     // TODO -> better icon for pointer
