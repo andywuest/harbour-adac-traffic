@@ -83,6 +83,10 @@
         <source>Error loading traffic news.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>(%1 / %2)</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

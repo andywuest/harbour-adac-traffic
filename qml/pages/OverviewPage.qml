@@ -35,7 +35,7 @@ Page {
         app.reloadTrafficData(1);
     }
 
-    function trafficDataChanged(result, error, date, clearData, lastPage) {
+    function trafficDataChanged(result, error, date, clearData, lastPage, currentPage, numberOfPages) {
         Functions.log("[OverviewPage] - data has changed, error " + error + ", date : " + date + ", clearData : " + clearData);
         errorOccured = (error !== "");
         lastUpdate = new Date();
@@ -59,6 +59,7 @@ Page {
                 }
                 trafficIncidentsModel.append(trafficIncident);
             }
+            incidentsLoadingIndicator.loadingIndexLabelText = qsTr("(%1 / %2)").arg(currentPage).arg(numberOfPages);
             if (lastPage)
                 loading = false;
 

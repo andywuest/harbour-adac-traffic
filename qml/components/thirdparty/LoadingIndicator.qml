@@ -20,10 +20,11 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Item {
-
     id: loadingIndicator
 
     property bool withOverlay: true
+
+    property alias loadingIndexLabelText: loadingIndexLabel.text
 
     width: parent.width
     height: parent.height
@@ -45,6 +46,12 @@ Item {
         InfoLabel {
             id: loadingLabel
             text: qsTr("Loading...")
+        }
+
+        // customization from the original
+        InfoLabel {
+            id: loadingIndexLabel
+            font.pixelSize: Theme.fontSizeSmall
         }
 
         BusyIndicator {
