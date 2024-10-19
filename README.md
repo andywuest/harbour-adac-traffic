@@ -20,6 +20,7 @@ Andreas Wüst [andreas.wuest.freelancer@gmail.com](mailto:andreas.wuest.freelanc
 ![Traffic News](/screenshots/traffic_news_small.png?raw=true "Traffic News")
 ![Settings Page](/screenshots/settings_page_small.png?raw=true "Settings Page")
 ![About Dialog](/screenshots/about_page_small.png?raw=true "About Dialog")
+![Cover Page](/screenshots/cover_page_small.png?raw=true "Cover Page")
 
 ## Build
 Simply clone this repository.
