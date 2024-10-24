@@ -55,12 +55,7 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <source>Reload Traffic Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Traffic Incidents</source>
-        <extracomment>OverviewPage page header</extracomment>
+        <source>(%1 / %2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -72,7 +67,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zeitverlust: %1</source>
+        <source>Reload Traffic Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traffic Incidents</source>
+        <extracomment>OverviewPage page header</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -84,8 +84,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(%1 / %2)</source>
-        <translation></translation>
+        <source>Zeitverlust: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
