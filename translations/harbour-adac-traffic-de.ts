@@ -55,13 +55,8 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <source>Reload Traffic Data</source>
-        <translation>Verkehrsmeldungen aktualisieren</translation>
-    </message>
-    <message>
-        <source>Traffic Incidents</source>
-        <extracomment>OverviewPage page header</extracomment>
-        <translation>Verkehrsmeldungen</translation>
+        <source>(%1 / %2)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>About</source>
@@ -72,19 +67,24 @@
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <source>Zeitverlust: %1</source>
-        <translation>Zeitverlust %1</translation>
+        <source>Reload Traffic Data</source>
+        <translation>Datan neu laden</translation>
+    </message>
+    <message>
+        <source>Traffic Incidents</source>
+        <extracomment>OverviewPage page header</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No traffic news reported for the search criteria.</source>
-        <translation>Keine Verkehrsmeldungen für die Suchkriterien gefunden.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error loading traffic news.</source>
-        <translation>Fehler beim Laden der Verkehrsmeldungen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(%1 / %2)</source>
+        <source>Zeitverlust: %1</source>
         <translation></translation>
     </message>
 </context>

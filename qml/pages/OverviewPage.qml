@@ -32,6 +32,9 @@ Page {
 
     function receiveSettingsChanged() {
         Functions.log("[OverviewPage] - settings changed received.");
+        incidentsLoadingIndicator.loadingIndexLabelText = ""
+        trafficDataPresent = false;
+        loading = true;
         app.reloadTrafficData(1);
     }
 

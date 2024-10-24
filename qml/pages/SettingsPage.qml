@@ -35,7 +35,7 @@ Page {
             Functions.log("[SettingsPage] store settings!");
             trafficDataSettings.streetName = streetNameTextField.text;
             trafficDataSettings.sync();
-            Functions.log("[SettingsPage] new streetName : " + trafficDataSettings.streetName);
+            // TODO wird auf aufgerufen, wenn man in die combobox navigiert ->
             settingsChanged();
         }
     }
