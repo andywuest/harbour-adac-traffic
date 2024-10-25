@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-// QTBUG-34418
 import "."
 import "../components"
 import "../js/constants.js" as Constants
@@ -30,13 +29,29 @@ Page {
 
     signal settingsChanged()
 
+    function addToStateModel(state) {
+        stateComboBoxItems.append({
+            "text": qsTr(state)
+        });
+    }
+
+    Component.onCompleted: {
+        for (var i = 0; i < Constants.STATE_MAP.length; i++) {
+            addToStateModel(Constants.STATE_MAP[i]);
+        }
+    }
     onStatusChanged: {
         if (status === PageStatus.Deactivating) {
             Functions.log("[SettingsPage] store settings!");
             trafficDataSettings.streetName = streetNameTextField.text;
+            trafficDataSettings.state = stateComboBox.currentIndex;
             trafficDataSettings.sync();
             // TODO wird auf aufgerufen, wenn man in die combobox navigiert ->
             settingsChanged();
+        }
+        if (status === PageStatus.Activating) {
+            Functions.log("[SettingsPage] init via settings!");
+            stateComboBox.currentIndex = trafficDataSettings.state;
         }
     }
 
@@ -98,12 +113,15 @@ Page {
 
             }
 
+            ListModel {
+                id: stateComboBoxItems
+            }
+
             ComboBox {
                 id: stateComboBox
 
                 //: SettingsPage state
                 label: qsTr("State")
-                currentIndex: trafficDataSettings.state
                 //: SettingsPage state explanation
                 description: qsTr("State for which you want the traffic data")
                 visible: countryComboBox.currentIndex === Constants.COUNTRY_GERMANY
@@ -113,89 +131,16 @@ Page {
                         trafficDataSettings.state = index;
                     }
 
-                    MenuItem {
-                        //: SettingsPage state none
-                        text: qsTr("")
-                    }
+                    Repeater {
+                        model: stateComboBoxItems
 
-                    MenuItem {
-                        //: SettingsPage state Baden-Württemberg
-                        text: qsTr("Baden-Württemberg")
-                    }
+                        delegate: MenuItem {
+                            text: model.text
+//                            onClicked: {
+//                                console.log("index :  " + index);
+//                            }
+                        }
 
-                    MenuItem {
-                        //: SettingsPage state Bayern
-                        text: qsTr("Bayern")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Berlin
-                        text: qsTr("Berlin")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Brandenburg
-                        text: qsTr("Brandenburg")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Bremen
-                        text: qsTr("Bremen")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Hamburg
-                        text: qsTr("Hamburg")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Hessen
-                        text: qsTr("Hessen")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Mecklenburg-Vorpommern
-                        text: qsTr("Mecklenburg-Vorpommern")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Niedersachsen
-                        text: qsTr("Niedersachsen")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state NRW
-                        text: qsTr("NRW")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Rheinland-Pfalz
-                        text: qsTr("Rheinland-Pfalz")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Saarland
-                        text: qsTr("Saarland")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Sachsen
-                        text: qsTr("Sachsen")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Sachsen-Anhalt
-                        text: qsTr("Sachsen-Anhalt")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Schleswig-Holstein
-                        text: qsTr("Schleswig-Holstein")
-                    }
-
-                    MenuItem {
-                        //: SettingsPage state Thüringen
-                        text: qsTr("Thüringen")
                     }
 
                 }
