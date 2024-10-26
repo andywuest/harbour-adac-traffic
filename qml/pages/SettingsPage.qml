@@ -46,7 +46,6 @@ Page {
             trafficDataSettings.streetName = streetNameTextField.text;
             trafficDataSettings.state = stateComboBox.currentIndex;
             trafficDataSettings.sync();
-            // TODO wird auf aufgerufen, wenn man in die combobox navigiert ->
             settingsChanged();
         }
         if (status === PageStatus.Activating) {
@@ -136,9 +135,6 @@ Page {
 
                         delegate: MenuItem {
                             text: model.text
-//                            onClicked: {
-//                                console.log("index :  " + index);
-//                            }
                         }
 
                     }

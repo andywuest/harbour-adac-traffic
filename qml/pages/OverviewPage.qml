@@ -28,14 +28,12 @@ Page {
     property bool loading: false
     property bool errorOccured: false
     property bool trafficDataPresent: false
+    property bool settingsChanged: false
     property date lastUpdate
 
     function receiveSettingsChanged() {
         Functions.log("[OverviewPage] - settings changed received.");
-        incidentsLoadingIndicator.loadingIndexLabelText = "";
-        trafficDataPresent = false;
-        loading = true;
-        app.reloadTrafficData(1);
+        settingsChanged = true;
     }
 
     function trafficDataChanged(result, error, date, clearData, lastPage, currentPage, numberOfPages) {
@@ -72,6 +70,15 @@ Page {
         }
     }
 
+    onStatusChanged: {
+        if (status === PageStatus.Activating && settingsChanged) {
+            incidentsLoadingIndicator.loadingIndexLabelText = "";
+            trafficDataPresent = false;
+            loading = true;
+            settingsChanged = false;
+            app.reloadTrafficData(1);
+        }
+    }
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
     Component.onCompleted: {
