@@ -77,7 +77,13 @@ ApplicationWindow {
     function getTrafficDataResultHandler(result) {
       Functions.log("[ApplicationWindow] result : " + result);
       var jsonResult = JSON.parse(result.toString());
-      var numberOfResults = jsonResult.data.trafficNews.size;
+      var trafficNewsArray = jsonResult.data.trafficNews;
+      if (!trafficNewsArray) {
+          errorResultHandler(qsTr("Data error - missing data"))
+          return;
+      }
+
+      var numberOfResults = trafficNewsArray.size;
       var numberOfPages = (numberOfResults / 10) + 1
       Functions.log("[ApplicationWindow] getTrafficDataResultHandler - count  : " + numberOfResults);
       var clearData = (currentPage == 1);
