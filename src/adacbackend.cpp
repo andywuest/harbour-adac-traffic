@@ -75,13 +75,14 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString co
   request.setRawHeader("Origin", "https://www.adac.de");
 
   QString postBody(ADAC_POST_BODY);
+  QString graphQLQuery(QString(GRAPHQL_QUERY).replace("\n", ""));
 
   QString postBodyString = postBody.arg(country, state, streetName, showConstructionSites ? "true" : "false", QString::number(page),
-                                            GRAPHQL_QUERY);
+                                            graphQLQuery);
 
   QByteArray finalPostBody = postBodyString.toUtf8();
 
-  QString encodedPass = QString(QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5));
+  // QString encodedPass = QString(QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5));
   QByteArray hash = QCryptographicHash::hash(finalPostBody, QCryptographicHash::Md5);
 
 //  qDebug() << encodedPass << endl;
