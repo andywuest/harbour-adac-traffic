@@ -174,4 +174,11 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>harbour-adac-traffic</name>
+    <message>
+        <source>Data error - missing data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

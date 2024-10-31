@@ -174,4 +174,11 @@
         <translation>Italien</translation>
     </message>
 </context>
+<context>
+    <name>harbour-adac-traffic</name>
+    <message>
+        <source>Data error - missing data</source>
+        <translation>Datenfehler - Daten nicht gefunden</translation>
+    </message>
+</context>
 </TS>
