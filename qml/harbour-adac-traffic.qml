@@ -39,7 +39,7 @@ ApplicationWindow {
         path: "/apps/harbour-adac-traffic/settings"
 
         property int country: Constants.COUNTRY_GERMANY
-        property int state: Constants.STATE_NONE
+        property int state: Constants.STATE_BW
         property bool showConstructionSites: false
         property string streetName: ""
     }

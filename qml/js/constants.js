@@ -16,6 +16,7 @@ COUNTRY_MAP[2] = "CH";
 COUNTRY_MAP[3] = "IT";
 
 var STATE_NONE = 0;
+var STATE_BW = 1;
 
 var STATE_MAP = [];
 STATE_MAP[0] = "";
