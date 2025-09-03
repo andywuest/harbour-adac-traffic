@@ -42,7 +42,6 @@ DISTFILES += qml/harbour-adac-traffic.qml \
     qml/icons/empty.svg \
     qml/icons/type/baustelle.png \
     qml/pages/SettingsPage.qml \
-    qml/pages/icons/github.svg \
     rpm/harbour-adac-traffic.changes.in \
     rpm/harbour-adac-traffic.changes.run.in \
     rpm/harbour-adac-traffic.spec \
