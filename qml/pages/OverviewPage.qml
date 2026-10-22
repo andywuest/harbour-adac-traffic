@@ -46,9 +46,10 @@ Page {
         trafficDataPresent = false;
         incidentsHeader.description = Functions.resolveCountryName(trafficDataSettings.country) + ": " + (trafficDataSettings.state > 0 ? Constants.STATE_MAP[trafficDataSettings.state] : "") + (trafficDataSettings.streetName.length > 0 ? " '" + trafficDataSettings.streetName + "'" : "");
         if (!errorOccured) {
-            trafficDataPresent = (result.data.trafficNews.items.length > 0);
-            for (var i = 0; i < result.data.trafficNews.items.length; i++) {
-                var trafficIncident = result.data.trafficNews.items[i];
+            var trafficNewsItem = result.data.trafficNewsLegacy;
+            trafficDataPresent = (trafficNewsItem.items.length > 0);
+            for (var i = 0; i < trafficNewsItem.items.length; i++) {
+                var trafficIncident = trafficNewsItem.items[i];
                 // add missing json elements - to prevent breaking of rendering
                 if (!trafficIncident.timeLoss)
                     trafficIncident.timeLoss = "";
@@ -71,6 +72,7 @@ Page {
     }
 
     onStatusChanged: {
+        Functions.log("[OverviewPage] - status changed.");
         if (status === PageStatus.Activating && settingsChanged) {
             incidentsLoadingIndicator.loadingIndexLabelText = "";
             trafficDataPresent = false;
@@ -228,7 +230,7 @@ Page {
 
                                 IncidentSign {
                                     width: parent.width
-                                    incidenTypeIconPath: Functions.determineIncidentTypeIconPath(type)
+                                    incidenTypeIconPath: Functions.determineIncidentTypeIconPath(image.defaultImageUrls)
                                 }
 
                             }
@@ -242,7 +244,7 @@ Page {
                                     width: parent.width // TODO if D and street starts with I -> display text
                                     headlineIconPath: Functions.determineIconPath(streetSign.country, street)
                                     hasIcon: Functions.hasStreetIcon(streetSign.country, street)
-                                    headlineText: Functions.determineHeadlineText(headline, street)
+                                    headlineText: Functions.determineHeadlineText(headlineDirection)
                                 }
 
                                 Label {

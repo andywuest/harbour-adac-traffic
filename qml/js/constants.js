@@ -36,3 +36,23 @@ STATE_MAP[13] = "Sachsen";
 STATE_MAP[14] = "Sachsen-Anhalt";
 STATE_MAP[15] = "Schleswig-Holstein";
 STATE_MAP[16] = "Thüringen";
+
+// TODO wird diese map noch benoetigt?
+var STATE_MAP_SEARCH = [];
+STATE_MAP_SEARCH[0] = "";
+STATE_MAP_SEARCH[1] = "BW";
+STATE_MAP_SEARCH[2] = "Bayern";
+STATE_MAP_SEARCH[3] = "Berlin";
+STATE_MAP_SEARCH[4] = "Brandenburg";
+STATE_MAP_SEARCH[5] = "Bremen";
+STATE_MAP_SEARCH[6] = "Hamburg";
+STATE_MAP_SEARCH[7] = "Hessen";
+STATE_MAP_SEARCH[8] = "MV";
+STATE_MAP_SEARCH[9] = "Niedersachsen";
+STATE_MAP_SEARCH[10] = "NW";
+STATE_MAP_SEARCH[11] = "RP";
+STATE_MAP_SEARCH[12] = "Saarland";
+STATE_MAP_SEARCH[13] = "Sachsen";
+STATE_MAP_SEARCH[14] = "Sachsen-Anhalt";
+STATE_MAP_SEARCH[15] = "SH";
+STATE_MAP_SEARCH[16] = "Thüringen";

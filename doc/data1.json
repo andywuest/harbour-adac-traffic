@@ -1,0 +1,182 @@
+{
+  "data": {
+    "trafficNewsLegacy": {
+      "size": 4,
+      "items": [
+        {
+          "id": "EE7559F9F307081364037123460AB4CCC2C88366BD5CE54BEA4C6203F437FD43",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png",
+            "alt": "",
+            "caption": "Stau",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Salzburg Richtung München, zwischen Anschlussstelle Achenmühle und Anschlussstelle Rosenheim, dichter Verkehr, mind. 1 Minute Zeitverlust",
+          "street": "A8",
+          "timeLoss": "1 Minute",
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Achenmühle",
+            "to": "Anschlussstelle Rosenheim",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "AD0E2AB6D0DA5FDDD7F8152D8A52919147F92338820CF981C6DC8250A2DC9CB9",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png",
+            "alt": "",
+            "caption": "Stau",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, München Richtung Salzburg, zwischen Anschlussstelle Rosenheim und Anschlussstelle Rohrdorf, 1 km Stau, mind. 4 Minuten Zeitverlust",
+          "street": "A8",
+          "timeLoss": "4 Minuten",
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Rosenheim",
+            "to": "Anschlussstelle Rohrdorf",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "DB94682A00F5BF7BE273888B250040107069C6D5C7982AF217177F4BA3CA25F9",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.png",
+            "alt": "",
+            "caption": "Gefahr",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8 München Richtung Stuttgart zwischen Zusmarshausen und Burgau Gefahr durch defekten LKW, Standstreifen blockiert",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Zusmarshausen",
+            "to": "Anschlussstelle Burgau",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "464AF58E41206F5AD64DBDB7C7081FD7DA8AE0D728EEE8D874D5928C871F0657",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png",
+            "alt": "",
+            "caption": "Stau",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Salzburg Richtung München, zwischen Grenzübergang Bad Reichenhall und Anschlussstelle Bad Reichenhall, dichter Verkehr, mind. 1 Minute Zeitverlust",
+          "street": "A8",
+          "timeLoss": "1 Minute",
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Grenzübergang Bad Reichenhall",
+            "to": "Anschlussstelle Bad Reichenhall",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        }
+      ],
+      "__typename": "TrafficNewsLegacy"
+    }
+  }
+}

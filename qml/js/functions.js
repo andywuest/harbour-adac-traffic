@@ -41,7 +41,17 @@ function determineIconPath(country, street) {
     return "../icons/" + countryToIsoCode(country) + "/" + street.toLowerCase() + ".svg";
 }
 
-function determineHeadlineText(headline, street) {
+// TODO vollstaending??
+function determineHeadlineText(headlineDirection) {
+    var result = "";
+    if (headlineDirection.from && headlineDirection.to) {
+        result += (headlineDirection.from + " \u2192 " + headlineDirection.to);
+    }
+    return result;
+}
+
+// TODO remove me
+function determineHeadlineTextOld(headline, street) {
     var result = "";
     if (street.substring(0, 1) === "I" || street.substring(0, 2) === "GM" || street.substring(0, 2) === "GN"
             || street.substring(0, 1) === "K" || street.substring(0, 2) === "GF"
@@ -55,7 +65,24 @@ function determineHeadlineText(headline, street) {
     return result += (headline.text ? headline.text : headline.from + " \u2192 " + headline.to);
 }
 
-function determineIncidentTypeIconPath(incidentType) {
+// TODO vollstaending??
+function determineIncidentTypeIconPath(defaultImageUrls) {
+    var incidentType = "";
+    if (defaultImageUrls && defaultImageUrls.length > 0) {
+        var imageUrl =defaultImageUrls[0];
+        if (imageUrl.indexOf('_Stau_') !== -1) {
+            incidentType = "stau";
+        } else if (imageUrl.indexOf('-Map_') !== -1) {
+            incidentType = "verkehrsmeldung";
+        } else if (imageUrl.indexOf('_Baustelle_') !== -1) {
+            incidentType = "baustelle";
+        }
+    }
+    return "../icons/type/" + incidentType.toLowerCase() + ".png";
+}
+
+// TODO removeme
+function determineIncidentTypeIconPathOld(incidentType) {
     return "../icons/type/" + incidentType.toLowerCase() + ".png";
 }
 

@@ -57,7 +57,7 @@ ApplicationWindow {
         var backend = getDataBackend(Constants.BACKEND_ADAC);
         disconnectSlots(backend);
         connectSlots(backend);
-        var state = (trafficDataSettings.country === Constants.COUNTRY_GERMANY) ? Constants.STATE_MAP[trafficDataSettings.state] : "";
+        var state = (trafficDataSettings.country === Constants.COUNTRY_GERMANY) ? Constants.STATE_MAP_SEARCH[trafficDataSettings.state] : "";
         var country = Constants.COUNTRY_MAP[trafficDataSettings.country];
         backend.getTrafficData(country, state, trafficDataSettings.streetName, trafficDataSettings.showConstructionSites, page)
     }
@@ -77,7 +77,7 @@ ApplicationWindow {
     function getTrafficDataResultHandler(result) {
       Functions.log("[ApplicationWindow] result : " + result);
       var jsonResult = JSON.parse(result.toString());
-      var trafficNewsArray = jsonResult.data.trafficNews;
+      var trafficNewsArray = jsonResult.data.trafficNewsLegacy;
       if (!trafficNewsArray) {
           errorResultHandler(qsTr("Data error - missing data"))
           return;
@@ -99,7 +99,7 @@ ApplicationWindow {
 
     function errorResultHandler(result) {
         Functions.log("[ApplicationWindow] - result error : " + result);
-        trafficDataChanged({}, result, new Date(), true, true);
+        trafficDataChanged({}, result, new Date(), true, true, 0, 0);
         trafficNewsCountChanged(-1);
     }
 

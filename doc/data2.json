@@ -1,0 +1,311 @@
+{
+  "data": {
+    "trafficNewsLegacy": {
+      "size": 7,
+      "items": [
+        {
+          "id": "2BF1B224F811EEFB6682B3864D331FEBC26050BC4262155DEAEF87ECD463E6A2",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png",
+            "alt": "",
+            "caption": "Baustelle",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Stuttgart - Karlsruhe, in beiden Richtungen, zwischen Anschlussstelle Pforzheim-Süd und Anschlussstelle Pforzheim-Nord, Baustelle, bis 01.07.2027",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Pforzheim-Süd",
+            "to": "Anschlussstelle Pforzheim-Nord",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "82BF9C9A43444F95F1C64848B6B8A42D90350BF26A0F93950BAD81C2D73715CD",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png",
+            "alt": "",
+            "caption": "Baustelle",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Karlsruhe - Stuttgart, in beiden Richtungen, zwischen Anschlussstelle Karlsbad und Anschlussstelle Pforzheim-West, Fahrstreifen gesperrt, Fahrbahnverengung, von 09.06.2026 bis auf weiteres",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Karlsbad",
+            "to": "Anschlussstelle Pforzheim-West",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "A03AB1C769FDD1E8C80AABD0F748DF6F7B3E67DACD89F1757F386EC6CDABDB70",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png",
+            "alt": "",
+            "caption": "Baustelle",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, München - Stuttgart, in beiden Richtungen, zwischen Rastplatz Im Rübholz und Raststätte Denkendorf, Baustelle, die Geschwindigkeit ist begrenzt, Länge: 4.6 km Geschwindigkeitsbegrenzung: 80 km/h, bis 09.11.2026 00:00 Uhr",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Rastplatz Im Rübholz",
+            "to": "Raststätte Denkendorf",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "A31526939A4F88A4E9AFE0DCA9A212A35616C2C933262F23D3E24C70EE8FD58F",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png",
+            "alt": "",
+            "caption": "Baustelle",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Karlsruhe Richtung Stuttgart, zwischen Dreieck Karlsruhe und Anschlussstelle Karlsbad, Fahrstreifen gesperrt, Fahrbahn auf zwei Fahrstreifen verengt, Brückenarbeiten, von 13.08.2026 bis 30.11.2026",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Dreieck Karlsruhe",
+            "to": "Anschlussstelle Karlsbad",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "7127938A08F935771068A77FCDCD3E5668C67498E68F10B7530BC90FF63E9B4E",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png",
+            "alt": "",
+            "caption": "Baustelle",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Baustelle_wmuqef.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Karlsruhe Richtung Stuttgart, zwischen Anschlussstelle Pforzheim-Süd und Anschlussstelle Heimsheim, Baustelle, die Geschwindigkeit ist begrenzt, Länge: 3.9 km Geschwindigkeitsbegrenzung: 80 km/h, bis 15.12.2026 23:00 Uhr",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Pforzheim-Süd",
+            "to": "Anschlussstelle Heimsheim",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "7DD29DA2CBABA99B33657B851A4DD0B746479D01F0114EA2AA543EBA63617AD2",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.png",
+            "alt": "",
+            "caption": "Gefahr",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen-Map_jlhpmh.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, A81 Karlsruhe Richtung Stuttgart zwischen Leonberg-Ost und Kreuz Stuttgart Gefahr durch defekten PKW auf dem Standstreifen",
+          "street": "A8",
+          "timeLoss": null,
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Anschlussstelle Leonberg-Ost",
+            "to": "Kreuz Stuttgart",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        },
+        {
+          "id": "626B242119E37F2FAC02FAFC137AC0C535AABF004D443028ACFAA4DB976622D1",
+          "image": {
+            "publicId": "Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png",
+            "alt": "",
+            "caption": "Stau",
+            "defaultImageUrls": [
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.jpeg",
+              "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.webp"
+            ],
+            "copyright": "ADAC",
+            "sources": [
+              {
+                "srcSet": "https://assets.adac.de/image/upload/ar_1:1,c_fill,f_auto,g_auto,q_auto:eco,w_96/v1/Verkehrsmeldungen/Verkehrsmeldungen_Stau_ad3k9q.png 96w,",
+                "media": "(min-width: 0px)",
+                "aspectRatio": {
+                  "width": 1,
+                  "height": 1,
+                  "__typename": "CloudinaryImageAspectRatio"
+                },
+                "sizes": "100%",
+                "__typename": "CloudinaryImageSource"
+              }
+            ],
+            "isLandscape": null,
+            "__typename": "CloudinaryImage"
+          },
+          "details": "A8, Stuttgart Richtung Karlsruhe, zwischen Kreuz Stuttgart und Anschlussstelle Leonberg-Ost, dichter Verkehr, mind. 1 Minute Zeitverlust",
+          "street": "A8",
+          "timeLoss": "1 Minute",
+          "streetSign": {
+            "streetNumber": "8",
+            "country": "D",
+            "__typename": "TrafficNewsLegacyStreetSign"
+          },
+          "headlineDirection": {
+            "from": "Kreuz Stuttgart",
+            "to": "Anschlussstelle Leonberg-Ost",
+            "__typename": "TrafficNewsLegacyDirectionHeadline"
+          },
+          "headlineNonDirection": "A8",
+          "__typename": "TrafficNewsLegacyItem"
+        }
+      ],
+      "__typename": "TrafficNewsLegacy"
+    }
+  }
+}

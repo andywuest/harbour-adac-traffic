@@ -23,57 +23,26 @@ const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100
 const char ADAC_URL[] = "https://www.adac.de/bff";
 
 const char ADAC_POST_BODY[] = "{"
-        "   \"operationName\":\"TrafficNews\","
+        "   \"operationName\":\"TrafficNewsLegacy\","
         "   \"variables\":{"
         "      \"filter\":{"
-        "         \"country\":{"
-        "            \"country\":\"%1\","
-        "            \"federalState\":\"%2\","
-        "            \"street\":\"%3\","
-        "            \"showConstructionSites\":%4,"
-        "            \"showTrafficNews\":true,"
-        "            \"pageNumber\":%5"
-        "         }"
+        "         \"country\":\"%1\","
+        "         \"federalState\":\"%2\","
+        "         \"street\":\"%3\","
+        "         \"showConstructionSites\":%4,"
+        "         \"pageNumber\":%5"
         "      }"
         "   },"
-        "   \"query\":\"%6\""
+        "   \"extensions\":{"
+        "      \"clientLibrary\":{"
+        "         \"name\":\"@apollo/client\","
+        "         \"version\":\"4.1.9\""
+        "      },"
+        "      \"persistedQuery\":{"
+        "         \"version\":1,"
+        "         \"sha256Hash\":\"55e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442\""
+        "      }"
+        "   }"
         "}";
-
-const char GRAPHQL_QUERY[] = R"(
-query TrafficNews($filter: TrafficNewsFilterInput!) {
-  trafficNews(filter: $filter) {
-    ...TrafficNewsItems
-  }
-}
-fragment TrafficNewsItems on TrafficNews {
-  size
-  items {
-    ...TrafficNewsItem
-  }
-}
-fragment TrafficNewsItem on TrafficNewsItem {
-  id
-  type
-  details
-  street
-  timeLoss
-  streetSign {
-    streetNumber
-    country
-  }
-  headline {
-    __typename
-    ...TrafficNewsDirectionHeadline
-    ...TrafficNewsNonDirectionHeadline
-  }
-}
-fragment TrafficNewsDirectionHeadline on TrafficNewsDirectionHeadline {
-  from
-  to
-}
-fragment TrafficNewsNonDirectionHeadline on TrafficNewsNonDirectionHeadline {
-  text
-}
-)";
 
 #endif // CONSTANTS_H
