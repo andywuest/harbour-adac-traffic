@@ -22,27 +22,29 @@ const char MIME_TYPE_JSON[] = "application/json";
 const char USER_AGENT[] = "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0";
 const char ADAC_URL[] = "https://www.adac.de/bff";
 
-const char ADAC_POST_BODY[] = "{"
-        "   \"operationName\":\"TrafficNewsLegacy\","
-        "   \"variables\":{"
-        "      \"filter\":{"
-        "         \"country\":\"%1\","
-        "         \"federalState\":\"%2\","
-        "         \"street\":\"%3\","
-        "         \"showConstructionSites\":%4,"
-        "         \"pageNumber\":%5"
-        "      }"
-        "   },"
-        "   \"extensions\":{"
-        "      \"clientLibrary\":{"
-        "         \"name\":\"@apollo/client\","
-        "         \"version\":\"4.1.9\""
-        "      },"
-        "      \"persistedQuery\":{"
-        "         \"version\":1,"
-        "         \"sha256Hash\":\"55e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442\""
-        "      }"
-        "   }"
-        "}";
+const char ADAC_POST_BODY[] = R"(
+{
+  "operationName": "TrafficNewsLegacy",
+  "variables": {
+    "filter": {
+      "country": "%1",
+      "federalState": "%2",
+      "street": "%3",
+      "showConstructionSites": %4,
+      "pageNumber": %5
+    }
+  },
+  "extensions": {
+    "clientLibrary": {
+      "name": "@apollo/client",
+      "version": "4.1.9"
+    },
+    "persistedQuery": {
+      "version": 1,
+      "sha256Hash": "55e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442"
+    }
+  }
+}
+)";
 
 #endif // CONSTANTS_H

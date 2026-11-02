@@ -76,6 +76,8 @@ function determineIncidentTypeIconPath(defaultImageUrls) {
             incidentType = "verkehrsmeldung";
         } else if (imageUrl.indexOf('_Baustelle_') !== -1) {
             incidentType = "baustelle";
+        } else if (imageUrl.indexOf('_Vollsperrung_') !== -1) {
+            incidentType = "vollsperrung";
         }
     }
     return "../icons/type/" + incidentType.toLowerCase() + ".png";
