@@ -37,6 +37,10 @@
         <extracomment>AboutPage text - about text</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Donate with Liberapay</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

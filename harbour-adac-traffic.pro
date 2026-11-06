@@ -36,6 +36,7 @@ DISTFILES += qml/harbour-adac-traffic.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/icons/github.svg \
     qml/pages/icons/paypal.svg \
+    qml/pages/icons/liberapay.svg \
     qml/icons/de/*.svg \
     qml/icons/ch/*.svg \
     qml/icons/type/*.svg \

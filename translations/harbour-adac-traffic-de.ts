@@ -37,6 +37,10 @@
         <extracomment>AboutPage text - about text</extracomment>
         <translation>Die Anwendung zeigt Verkehrsmeldungen in Deutschland, Österreich, Italien und der Schweiz unter Verwendung der ADAC Verkehrs API. Verkehrsmeldungen ist Open Source und unter der GPL v3 lizensiert.</translation>
     </message>
+    <message>
+        <source>Donate with Liberapay</source>
+        <translation>Spenden via Liberapay</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -56,7 +60,7 @@
     <name>OverviewPage</name>
     <message>
         <source>(%1 / %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>(%1 / %2)</translation>
     </message>
     <message>
         <source>About</source>
@@ -77,11 +81,11 @@
     </message>
     <message>
         <source>No traffic news reported for the search criteria.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Verkehrsnachrichten für die Suchkriterien gerunden.</translation>
     </message>
     <message>
         <source>Error loading traffic news.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler beim Laden der Verkehrsnachrichten</translation>
     </message>
     <message>
         <source>Zeitverlust: %1</source>
