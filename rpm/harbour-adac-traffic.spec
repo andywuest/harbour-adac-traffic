@@ -1,7 +1,7 @@
 Name:       harbour-adac-traffic
 
 Summary:    ADAC Traffic Indication Application
-Version:    0.3.0
+Version:    0.3.1
 Release:    1
 License:    LICENSE
 URL:        http://example.org/

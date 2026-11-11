@@ -23,7 +23,7 @@ import urllib.request
 BFF_URL = "https://www.adac.de/bff"
 OPERATION_NAME = "TrafficNewsLegacy"
 # Persisted query hash as used by the ADAC web frontend (@apollo/client)
-HASH = "55e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442"
+HASH = "944138708dd320c402fd63d04bc7254b18c94dfdc1ffd6b264a5e2bbb6674e41"
 
 FEDERAL_STATES = [
     "BW", "BY", "BE", "BB", "HB", "HH", "HE", "MV",

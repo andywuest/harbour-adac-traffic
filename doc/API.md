@@ -4,12 +4,13 @@ provides information about traffic problems. You can select the country / federa
 for that federal state
 
 Example URls are:
-https://www.adac.de/bff/?operationName=TrafficNewsLegacy&variables=%7B%22filter%22%3A%7B%22country%22%3A%22D%22%2C%22federalState%22%3A%22BW%22%2C%22street%22%3A%22%22%2C%22showConstructionSites%22%3Afalse%2C%22pageNumber%22%3A1%7D%7D&extensions=%7B%22clientLibrary%22%3A%7B%22name%22%3A%22%40apollo%2Fclient%22%2C%22version%22%3A%224.1.9%22%7D%2C%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2255e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442%22%7D%7D
-https://www.adac.de/bff/?operationName=TrafficNewsLegacy&variables=%7B%22filter%22%3A%7B%22country%22%3A%22D%22%2C%22federalState%22%3A%22HE%22%2C%22street%22%3A%22%22%2C%22showConstructionSites%22%3Afalse%2C%22pageNumber%22%3A1%7D%7D&extensions=%7B%22clientLibrary%22%3A%7B%22name%22%3A%22%40apollo%2Fclient%22%2C%22version%22%3A%224.1.9%22%7D%2C%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2255e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442%22%7D%7D
+https://www.adac.de/bff/?operationName=TrafficNewsLegacy&variables=%7B%22filter%22%3A%7B%22country%22%3A%22D%22%2C%22federalState%22%3A%22BW%22%2C%22street%22%3A%22%22%2C%22showConstructionSites%22%3Afalse%2C%22pageNumber%22%3A1%7D%7D&extensions=%7B%22clientLibrary%22%3A%7B%22name%22%3A%22%40apollo%2Fclient%22%2C%22version%22%3A%224.1.9%22%7D%2C%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22944138708dd320c402fd63d04bc7254b18c94dfdc1ffd6b264a5e2bbb6674e41%22%7D%7D
+https://www.adac.de/bff/?operationName=TrafficNewsLegacy&variables=%7B%22filter%22%3A%7B%22country%22%3A%22D%22%2C%22federalState%22%3A%22BW%22%2C%22street%22%3A%22A8%22%2C%22showConstructionSites%22%3Afalse%2C%22pageNumber%22%3A1%7D%7D&extensions=%7B%22clientLibrary%22%3A%7B%22name%22%3A%22%40apollo%2Fclient%22%2C%22version%22%3A%224.1.9%22%7D%2C%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22944138708dd320c402fd63d04bc7254b18c94dfdc1ffd6b264a5e2bbb6674e41%22%7D%7D
 
 The URL is straigt forward, however it contains a persistedQuery attribute for which it is not clear, where it comes
-from. Generate me command line client that takes the country and the federal state as arguments and properly calls
-the API endpoint to get the data.
+from. Generate me command line client that takes the country, street, and the federal state as arguments and properly calls
+the API endpoint to get the data. generate the client into the tools directory parallel to this directory. The client 
+should have the name adac_traffic_get.py
 
 The response for the API call looks like this:
 
@@ -18,3 +19,7 @@ The response for the API call looks like this:
 Another option is to search only by Street. Add this option as well, so that you do not have to provide a federalState
 The URL for this looks like: 
 https://www.adac.de/bff/?operationName=TrafficNewsLegacy&variables=%7B%22filter%22%3A%7B%22country%22%3A%22D%22%2C%22federalState%22%3A%22%22%2C%22street%22%3A%22A1%22%2C%22showConstructionSites%22%3Afalse%2C%22pageNumber%22%3A1%7D%7D&extensions=%7B%22clientLibrary%22%3A%7B%22name%22%3A%22%40apollo%2Fclient%22%2C%22version%22%3A%224.1.9%22%7D%2C%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2255e9b1be3d4f172ed4eab90e533609cd8e36546d40d84643ec5d1d96cb63c442%22%7D%7D
+
+Use the same logic as in the pyhton cli client to update the adacbackend.cpp class. The already exists a method executePostRequest
+which uses POST. Now create a corresponding method executeGetRequest using the logic. Replace the call of executePostRequest
+in getTrafficData with the new executeGetRequest. Add the query URL with the placeholders to constants.h.

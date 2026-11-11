@@ -43,6 +43,7 @@ protected:
   QNetworkAccessManager *manager;
 
   QNetworkReply *executePostRequest(const QUrl &url, const QString country, const QString state, const QString streetName, bool showConstructionSites, int page);
+  QNetworkReply *executeGetRequest(const QUrl &url, const QString country, const QString state, const QString streetName, bool showConstructionSites, int page);
   void connectErrorSlot(QNetworkReply *reply);
   QString processSearchResult(QByteArray searchReply);
 

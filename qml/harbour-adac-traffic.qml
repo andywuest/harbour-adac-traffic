@@ -77,7 +77,7 @@ ApplicationWindow {
     function getTrafficDataResultHandler(result) {
       Functions.log("[ApplicationWindow] result : " + result);
       var jsonResult = JSON.parse(result.toString());
-      var trafficNewsArray = jsonResult.data.trafficNewsLegacy;
+      var trafficNewsArray = jsonResult.data.trafficNewsLegacy; // Page
       if (!trafficNewsArray) {
           errorResultHandler(qsTr("Data error - missing data"))
           return;

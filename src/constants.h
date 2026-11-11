@@ -47,4 +47,6 @@ const char ADAC_POST_BODY[] = R"(
 }
 )";
 
+const char ADAC_GET_URL[] = "https://www.adac.de/bff/?operationName=TrafficNewsLegacy&variables=%7B%22filter%22%3A%7B%22country%22%3A%22{country}%22%2C%22federalState%22%3A%22{state}%22%2C%22street%22%3A%22{street}%22%2C%22showConstructionSites%22%3A{constructionSites}%2C%22pageNumber%22%3A{pageNumber}%7D%7D&extensions=%7B%22clientLibrary%22%3A%7B%22name%22%3A%22%40apollo%2Fclient%22%2C%22version%22%3A%224.1.9%22%7D%2C%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22944138708dd320c402fd63d04bc7254b18c94dfdc1ffd6b264a5e2bbb6674e41%22%7D%7D";
+
 #endif // CONSTANTS_H

@@ -34,7 +34,7 @@ ADACBackend::~ADACBackend() {
 void ADACBackend::getTrafficData(const QString country, const QString state, const QString streetName, bool showConstructionSites, int page) {
  qDebug() << "ADACBackend::getTrafficData";
 
- QNetworkReply *reply = executePostRequest(QUrl(ADAC_URL), country, state, streetName, showConstructionSites, page);
+ QNetworkReply *reply = executeGetRequest(QUrl(ADAC_URL), country, state, streetName, showConstructionSites, page);
 
  connectErrorSlot(reply);
  connect(reply, SIGNAL(finished()), this, SLOT(handleGetTrafficDataFinished()));
@@ -83,6 +83,32 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString co
   qDebug() << "body : " << postBodyString;
 
   return manager->post(request, finalPostBody);
+}
+
+QNetworkReply *ADACBackend::executeGetRequest(const QUrl &url, const QString country, const QString state, const QString streetName, bool showConstructionSites, int page) {
+  qDebug() << "ADACBackend::executeGetRequest " << url;
+  qDebug() << "country : " << country;
+  qDebug() << "federalState : " << state;
+  qDebug() << " streetName : " << streetName;
+  qDebug() << " showConstructionSites : " << showConstructionSites;
+  qDebug() << " page : " << page;
+
+  QString requestUrl(ADAC_GET_URL);
+  requestUrl.replace("{country}", country);
+  requestUrl.replace("{state}", state);
+  requestUrl.replace("{street}", QString::fromUtf8(QUrl::toPercentEncoding(streetName)));
+  requestUrl.replace("{constructionSites}", showConstructionSites ? "true" : "false");
+  requestUrl.replace("{pageNumber}", QString::number(page));
+
+  qDebug() << "url : " << requestUrl;
+
+  QNetworkRequest request{QUrl(requestUrl)};
+  request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
+  request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  request.setRawHeader("Origin", "https://www.adac.de");
+  request.setRawHeader("apollo-require-preflight", "true");
+
+  return manager->get(request);
 }
 
 void ADACBackend::connectErrorSlot(QNetworkReply *reply) {
