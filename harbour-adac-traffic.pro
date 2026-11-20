@@ -14,6 +14,8 @@ TARGET = harbour-adac-traffic
 
 CONFIG += sailfishapp
 
+LIBS += -lz
+
 SOURCES += src/harbour-adac-traffic.cpp \
     src/adacbackend.cpp \
     src/trafficmanager.cpp

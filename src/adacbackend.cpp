@@ -21,6 +21,52 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+#include <cstring>
+#include <zlib.h>
+
+namespace {
+
+QByteArray decompressGzip(const QByteArray &data) {
+  // only gzip data carries the magic bytes 0x1f 0x8b - this also prevents
+  // double decompression in case QNetworkReply already handled it
+  if (data.size() < 2 || static_cast<unsigned char>(data.at(0)) != 0x1f ||
+      static_cast<unsigned char>(data.at(1)) != 0x8b) {
+    return data;
+  }
+
+  z_stream stream;
+  std::memset(&stream, 0, sizeof(stream));
+  stream.next_in =
+      reinterpret_cast<Bytef *>(const_cast<char *>(data.constData()));
+  stream.avail_in = static_cast<uInt>(data.size());
+
+  // 15 window bits + 16 for gzip decoding
+  if (inflateInit2(&stream, 15 + 16) != Z_OK) {
+    qWarning() << "ADACBackend: could not initialize gzip decompression";
+    return data;
+  }
+
+  QByteArray result;
+  char buffer[16384];
+  int status;
+  do {
+    stream.next_out = reinterpret_cast<Bytef *>(buffer);
+    stream.avail_out = sizeof(buffer);
+    status = inflate(&stream, Z_NO_FLUSH);
+    if (status != Z_OK && status != Z_STREAM_END) {
+      qWarning() << "ADACBackend: could not decompress gzip data:" << status;
+      inflateEnd(&stream);
+      return data;
+    }
+    result.append(buffer, sizeof(buffer) - stream.avail_out);
+  } while (status != Z_STREAM_END);
+
+  inflateEnd(&stream);
+  return result;
+}
+
+} // namespace
+
 ADACBackend::ADACBackend(QNetworkAccessManager *manager, QObject *parent) : QObject(parent)
 {
   qDebug() << "Initializing ADAC Traffic Backend...";
@@ -48,7 +94,7 @@ void ADACBackend::handleGetTrafficDataFinished() {
     return;
   }
 
-  QByteArray searchReply = reply->readAll();
+  QByteArray searchReply = decompressGzip(reply->readAll());
   QJsonDocument jsonDocument = QJsonDocument::fromJson(searchReply);
   if (jsonDocument.isObject()) {
     emit getTrafficDataResultAvailable(processSearchResult(searchReply));
@@ -72,6 +118,7 @@ QNetworkReply *ADACBackend::executePostRequest(const QUrl &url, const QString co
   QNetworkRequest request(url);
   request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
   request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  request.setRawHeader("Accept-Encoding", "gzip");
   request.setRawHeader("Origin", "https://www.adac.de");
 
   QString postBody(ADAC_POST_BODY);
@@ -105,6 +152,7 @@ QNetworkReply *ADACBackend::executeGetRequest(const QUrl &url, const QString cou
   QNetworkRequest request{QUrl(requestUrl)};
   request.setHeader(QNetworkRequest::UserAgentHeader, USER_AGENT);
   request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+  request.setRawHeader("Accept-Encoding", "gzip");
   request.setRawHeader("Origin", "https://www.adac.de");
   request.setRawHeader("apollo-require-preflight", "true");
 
